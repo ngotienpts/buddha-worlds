@@ -1,0 +1,148 @@
+.ads-right {
+    img {
+        width: 100%;
+    }
+}
+.ads-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-primary {}
+
+.block-primary {
+    display: flex;
+    &__left {
+        flex: 1;
+        padding-right: 40px;
+        max-width: calc(100% - 408px);
+        width: 100%;
+    }
+    &__right {
+        flex-shrink: 0;
+        max-width: 408px;
+        width: 100%;
+    }
+}
+
+
+.arrow-slide-primary {
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+    background: #F2F2F2;
+    border-radius: 50%;
+    border: 1px solid #F2F2F2;
+    color: #212121;
+    transform: translateY(-50%);
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: #EC0033;
+    border-color: #EC0033;
+    color: #fff;
+
+  }
+  .swiper-button-next {
+    right: 14%;
+    top: 34%;
+  }
+  .swiper-button-prev {
+    left: 14%;
+    top: 34%;
+  }
+  .swiper-button-next:after {
+    content: '\279C';
+  }
+  .swiper-button-prev:after {
+    content: '\279C';
+    transform: rotate(180deg);
+  }
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 20px;
+  }
+
+  .swiper-button-next.swiper-button-disabled,
+  .swiper-button-prev.swiper-button-disabled {
+    pointer-events: none;
+    background: transparent;
+    opacity: 0;
+  }
+
+
+}
+
+
+
+
+.same-height {
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .article {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-img {
+    flex-shrink: 0;
+  }
+
+  .article-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.hidden.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.pagi-red {
+    .swiper-pagination-bullet {
+        background: #d9d9d9;
+    }
+  .swiper-pagination-bullet-active {
+    background: #EC0033;
+    width: 10px;
+    height: 10px;
+  }
+  
+}
+
+
+.section-primary {}
+.section-secondary {}
+.section-tertiary {}
+.section-quaternary {}
+.section-quinary {}
+.section-senary {}
+.section-septenary {}
+.section-octonary {}
+.section-nonary {}
+.section-decenary {}
+.section-eleventh {}
+.section-twelfth {}
+.section-thirteenth {}
+.section-fourteenth {}
