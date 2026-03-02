@@ -247,49 +247,70 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     // khởi tạo slider với 5 item
-    function initSliderFiveItems() {
-        const fiveSlides = document.querySelectorAll(".js__fiveSlidesContainer");
-        if (fiveSlides) {
-            fiveSlides.forEach((item) => {
-                var slider = item.querySelector(".js__fiveSlide");
-                var next = item.querySelector(".swiper-button-next");
-                var prev = item.querySelector(".swiper-button-prev");
-                var pagi = item.querySelector(".swiper-pagination");
-                new Swiper(slider, {
-                    slidesPerView: 1.6,
-                    spaceBetween: 12,
-                    slidesPerGroup: 1,
-                    loop:true,
-                    navigation: {
-                        nextEl: next || null,
-                        prevEl: prev || null,
-                    },
-                    pagination: {
-                        el: pagi || null,
-                        clickable: true,
-                    },
-                    // autoplay: {
-                    //     delay: 3000,
-                    //     disableOnInteraction: false,
-                    // },
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 15,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 15,
-                        },
-                        1200: {
-                            slidesPerView: 5,
-                            spaceBetween: 20,
-                        }
-                    },
-                });
+function initSliderFiveItems() {
+    const slideContainers = document.querySelectorAll(".js__fiveSlidesEmblaContainer");
+
+    slideContainers.forEach((container) => {
+        const viewportNode = container.querySelector(".js__emblaViewport");
+        if (!viewportNode) return;
+
+        const emblaApi = EmblaCarousel(viewportNode, {
+            loop: true,
+            align: "center",
+            skipSnaps: false,
+        });
+
+        const slides = emblaApi.slideNodes();
+        const totalSlides = slides.length; // Lấy tổng số lượng slide
+
+        // --- CẬP NHẬT HÀM SETACTIVE ---
+        const setActive = (index) => {
+            // Tính toán index của slide trước và sau (hỗ trợ loop)
+            const prevIndex = (index - 1 + totalSlides) % totalSlides;
+            const nextIndex = (index + 1) % totalSlides;
+
+            slides.forEach((s, i) => {
+                // Xóa tất cả các class cũ để tránh bị chồng chéo
+                s.classList.remove("is-active", "is-prev", "is-next");
+
+                if (i === index) {
+                    s.classList.add("is-active");
+                } else if (i === prevIndex) {
+                    s.classList.add("is-prev");
+                } else if (i === nextIndex) {
+                    s.classList.add("is-next");
+                }
             });
-        }
-    }
+        };
+
+        const updateOnSelect = () => {
+            const centerIndex = emblaApi.selectedScrollSnap();
+            setActive(centerIndex);
+        };
+
+        emblaApi.on("select", updateOnSelect);
+        
+        // --- KHỞI TẠO MẶC ĐỊNH ---
+        emblaApi.scrollTo(2, true); 
+        setActive(2);
+
+        // --- XỬ LÝ TƯƠNG TÁC ---
+        slides.forEach((slide, index) => {
+            slide.addEventListener("mouseenter", () => {
+                setActive(index);
+            });
+            
+            slide.addEventListener("click", () => {
+                setActive(index);
+                emblaApi.scrollTo(index);
+            });
+        });
+
+        container.addEventListener("mouseleave", () => {
+            updateOnSelect();
+        });
+    });
+}
 
     
     // xử lý sự kiện show menu mobile

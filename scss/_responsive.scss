@@ -108,6 +108,31 @@
     // --------------------------------------------------------------------header
 
     // -------------------------------------------------------------------- index
+    .section-primary {
+        &__slide {
+            .slide-hero {
+                height: 560px;
+                
+                &__icon {
+                    img {
+                        width: 80px;
+                    }
+                }
+
+                &__title {
+                    font-size: 14px;
+                }
+            }
+
+            .embla__slide {
+                &.is-active {
+                    .slide-hero__title {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
 
     // --------------------------------------------------------------------cate
 
@@ -345,30 +370,28 @@
     // --------------------------------------------------------------------header
 
     // --------------------------------------------------------------------index
-
-
-
-    
-
-    .arrow-slide-primary {
-        .swiper-button-next, 
-        .swiper-button-prev {
-            width: 32px;
-            height: 32px;
-        }
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 16px;
-        }
-       .swiper-button-next,
-       .swiper-rtl .swiper-button-prev {
-            right: 10px;
-        }
-       .swiper-button-prev,
-       .swiper-rtl .swiper-button-next {
-            left: 10px;
+    .section-primary {
+        &__slide {
+            
+            .embla__slide {
+                flex: 0 0 36%;
+                &.is-active {
+                    flex: 0 0 56%;
+                }
+                &.is-prev {
+                    transform-style: preserve-3d;
+                    transform: translate3d(0px, 0px, -100px) rotateX(-10deg) rotateY(30deg) scale(1) !important;
+                    background-image: linear-gradient(270deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+                }
+                &.is-next {
+                    transform-style: preserve-3d;
+                    transform: translate3d(0px, 0px, -100px) rotateX(-10deg) rotateY(-30deg) scale(1) !important;
+                    background-image: linear-gradient(270deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+                }
+            }
         }
     }
+
 
 
    
