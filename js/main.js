@@ -132,7 +132,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // xử lý lấy nội dung khi chuyển slide
+   function getContentPrimary(splide, container) {
+    // 1. Xác định Slide đang hiển thị chính giữa (Active)
+    const activeIndex = splide.index;
+    const activeSlide = splide.Components.Slides.getAt(activeIndex).slide;
 
+    if (activeSlide) {
+        // --- PHẦN GET: Lấy dữ liệu từ slide hiện tại ---
+        const title = activeSlide.querySelector('.js__getTitle')?.innerText;
+        const desc = activeSlide.querySelector('.js__getDecription')?.innerHTML; // Lấy cả thẻ p nếu có
+        const imgBtn = activeSlide.querySelector('.article-img img')?.getAttribute('src');
+
+        // Tìm container cha lớn nhất để set dữ liệu chính xác
+        const mainParent = container.closest('.js__getContentPrimary');
+
+        if (mainParent) {
+            // --- PHẦN SET: Đổ dữ liệu ra vùng hiển thị bên ngoài ---
+            
+            // Set Tiêu đề
+            const setTitle = mainParent.querySelector('.js__setTitle a') || mainParent.querySelector('.js__setTitle');
+            if (setTitle) setTitle.innerText = title;
+
+            // Set Mô tả
+            const setDesc = mainParent.querySelector('.js__setDecription');
+            if (setDesc) setDesc.innerHTML = desc;
+
+            // Set Background (Ảnh nền phía sau)
+            const setBg = mainParent.querySelector('.js__setBackground img');
+            if (setBg && imgBtn) {
+                setBg.setAttribute('src', imgBtn);
+            }
+        }
+    }
+}
     // Khởi tạo slider với một item
     function initSliderOneItems() {
         const oneSlides = document.querySelectorAll(".js__oneSlidesContainer");
@@ -164,41 +197,72 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // khởi tạo slider với free item
+    function initSliderFreeItems() {
+        const freeItems = document.querySelectorAll(".js__freeItemsContainer");
+
+        if (freeItems.length > 0) {
+    freeItems.forEach((item) => {
+        var sliderElement = item.querySelector(".js__freeSlide");
+        if (!sliderElement) return;
+
+        var splide = new Splide(sliderElement, {
+            type      : 'slide',
+            autoWidth : true,   
+            gap       : '16px',
+            arrows    : true,
+            pagination: false,
+            drag      : 'free',   
+            snap      : true,  
+            
+        });
+
+        
+        splide.mount();
+    });
+}
+    }
     // khởi tạo slider với 3 item
     function initSliderThreeItems() {
         const threeSlides = document.querySelectorAll(".js__threeSlidesContainer");
-        if (threeSlides) {
+
+        if (threeSlides.length > 0) {
             threeSlides.forEach((item) => {
-                var slider = item.querySelector(".js__threeSlide");
-                var next = item.querySelector(".swiper-button-next");
-                var prev = item.querySelector(".swiper-button-prev");
-                var pagi = item.querySelector(".swiper-pagination");
-                new Swiper(slider, {
-                    slidesPerView: 1,
-                    spaceBetween: 15,
-                    slidesPerGroup: 1,
-                    navigation: {
-                        nextEl: next || null,
-                        prevEl: prev || null,
-                    },
-                    pagination: {
-                        el: pagi || null,
-                        clickable: true,
-                    },
-                    // autoplay: {
-                    //     delay: 3000,
-                    //     disableOnInteraction: false,
-                    // },
+                var sliderElement = item.querySelector(".js__threeSlide");
+                
+                if (!sliderElement) return;
+
+                var splide = new Splide(sliderElement, {
+                    type   : 'loop',      
+                    perPage: 3,        
+                    focus  : 'center', 
+                    gap    : '20px',   
+                    pagination: false, 
+                    arrows    : true, 
+                    
                     breakpoints: {
-                        768: {
-                            slidesPerView: 2,
-                        },
                         1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 20,
+                            perPage: 3,
+                            gap    : '20px',
+                        },
+                        768: {
+                            perPage: 3,
+                            gap    : '20px',
+                        },
+                        
+                        640: {
+                            perPage: 3,
                         }
-                    },
+                    }
                 });
+
+                splide.on('mounted move', function () {
+                    setTimeout(() => {
+                        getContentPrimary(splide, item);
+                    }, 0);
+                });
+
+                splide.mount();
             });
         }
     }
@@ -247,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     // khởi tạo slider với 5 item
-function initSliderFiveItems() {
+function initSliderFiveItemsEmbla() {
     const slideContainers = document.querySelectorAll(".js__fiveSlidesEmblaContainer");
 
     slideContainers.forEach((container) => {
@@ -502,10 +566,11 @@ function initSliderFiveItems() {
         handleShowContent();
         handleMenuMobile();
         // slide
+        initSliderFreeItems();
         initSliderOneItems();
         initSliderThreeItems();
         initSliderFourItems();
-        initSliderFiveItems();
+        initSliderFiveItemsEmbla();
         
         // end slide
         handleBackTop();

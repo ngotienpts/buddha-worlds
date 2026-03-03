@@ -169,6 +169,7 @@
     .col-md-2 {
         grid-template-columns: repeat(2, 1fr);
     }
+
     /*-------------------------------------------------------------------------*/
     .mx-md-auto {
         margin-left: auto;
@@ -202,6 +203,15 @@
         margin-left: 0;
     }
     
+    /*-------------------------------------------------------------------------*/
+    .px-md-15 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    /*-------------------------------------------------------------------------*/
+    .mt-md-20 {
+        margin-top: 20px;
+    }
     /*-------------------------------------------------------------------------*/
     .py-md-40 {
         padding-top: 40px;
@@ -237,11 +247,24 @@
         font-size: 24px;
     }
     /*-------------------------------------------------------------------------*/
+    .w-md-120px {
+        width: 120px;
+    }
+    .w-md-270px {
+        width: 270px;
+    }
+    /*-------------------------------------------------------------------------*/
     .nowrap-md {
         flex-wrap: nowrap;
         white-space: nowrap;
         overflow: auto;
     }
+    /*-------------------------------------------------------------------------*/
+    .gap-md-16 {
+        gap: 16px;
+        grid-gap: 16px;
+    }
+    /*-------------------------------------------------------------------------*/
     .flex-md-column {
         flex-direction: column;
     }
@@ -257,11 +280,25 @@
     // --------------------------------------------------------------------index
 
     .arrow-slide-primary{
-       .swiper-button-next, 
-       .swiper-button-prev {
-           width: 36px;
-           height: 36px;
-       }
+       .splide {
+        &__arrow {
+            width: 32px;
+            height: 32px;
+           
+
+            svg {
+                fill: #EFE7B6;
+                width: 15px;
+                height: 15px;
+            }
+            &--prev {
+                left: 0px;
+            }
+            &--next {
+                right: 0px;
+            }
+        }
+    }
       
     }
  
@@ -280,7 +317,26 @@
 
         }
     }
-
+    .section-quinary {
+        &__center {
+            padding-left: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            .article-list {
+                flex-wrap: nowrap;
+            }
+            .article {
+                border: none;
+                padding-right: 0;
+                
+                &-inner {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
 
     // --------------------------------------------------------------------cate
 
@@ -326,6 +382,12 @@
 
         img {
             width: 12px;
+        }
+    }
+
+    .footer-primary {
+        &__left {
+            align-items: flex-start;
         }
     }
   
