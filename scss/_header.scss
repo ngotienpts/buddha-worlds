@@ -266,6 +266,14 @@
             }
         }
 
+        .category-item {
+            &.active {
+                .category-heading {
+                    background-color: #4b040b;
+                }
+            }
+        }
+
 
     }
 }

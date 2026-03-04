@@ -31,52 +31,129 @@
 
 }
 
-.breadcrumb {
-    &-container {
-        margin-bottom: 2px;
+.breadcrumb-primary {
+    &__list {
         display: flex;
         flex-wrap: nowrap;
         overflow: auto;
         white-space: nowrap;
+        gap: 10px 40px;
 
     }
 
-    &-item {
-        color: #333;
+}
+.see-more {
+    &__btn {
+        background-color: #A61B28;
+        padding: 8px 30px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 14px;
 
-        .breadcrumb-link {
-            margin-right: 12px;
-            font-weight: 300;
-        }
-
-        &:first-child {
-            .breadcrumb-link {
-                margin-left: -10px;
-                margin-right: 8px;
-            }
-        }
-
-        &:last-child {
-            color: #5f3b23;
-
-            .breadcrumb-link::before {
-                content: none;
-            }
-        }
-    }
-
-    &-link {
-        position: relative;
-        display: inline-block;
-        padding: 15px 10px 10px;
-
-        &::before {
-            content: "|";
-            position: absolute;
-            right: -5px;
-            color: #A8A8A8;
+        &:hover {
+            background-color: #4b040b;
+            color: #fff;
         }
     }
 }
 
+/*--------------------------------------------------- news*/
+/*--------------------------------------------------- lecture*/
+.lecture-primary {
+    &__right {
+        .article-thumb {
+            max-height: 420px;
+            overflow: auto;
+            .article {
+                cursor: pointer;
+                transition: all 0.2s ease;
+                &:hover {
+                    background-color: #f5f5f5;
+                }
+            }
+            .tab-item {
+                &.active {
+                    .article {
+                        background-color: #f5f5f5;
+                    }
+                }
+            }
+        }
+    }
+
+    &__slide {
+        position: relative;
+        padding-bottom: 30px;
+        
+    }
+}
+
+.lecture-tertiary {
+    &:nth-child(even) {
+        background-color: #fff;
+    }
+    &__control {
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 48px;
+        width: 100%;
+        height: 80px;
+
+        .swiper-button-prev {
+            left: 20px;
+            &:hover {
+                background: #f0f4f8;
+            }
+        }
+        .swiper-button-next {
+            right: auto;
+            left: 80px;
+            &:hover {
+                background: #f0f4f8;
+            }
+        }
+    }
+}
+
+.lecture-children-two-primary {
+    &__heading {
+        overflow: hidden;
+        .heading-item {
+            position: relative;
+            padding: 12px 0;
+            margin: 0 20px;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            &.active {
+                border-color: #a60e1d;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                right: -20px;
+                top: 50%;
+                height: 20px;
+                width: 2px;
+                background-color: rgb(240, 240, 240);
+                transform: translateY(-50%);
+                display: block;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+                &::before {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    &__not-found  {
+        min-height: 300px;
+    }
+}
 
