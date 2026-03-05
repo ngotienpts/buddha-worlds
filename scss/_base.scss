@@ -112,6 +112,11 @@ p {
 
 /*===========================================================================*/
 
+.w-450 {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
 .w-1080 {
     width: 100%;
     max-width: 1080px;
@@ -190,6 +195,9 @@ p {
 }
 .w-136px {
     width: 136px;
+}
+.w-100px {
+    width: 100px;
 }
 .w-150px {
     width: 150px;
@@ -452,7 +460,9 @@ p {
 .text-white-64 {
     color: rgba($color: #fff, $alpha: 0.64);
 }
-
+.text-white-f0 {
+    color: #f0f0f0;
+}
 .text-gray-9e {
     color: #9e9e9e;
 }
@@ -1400,7 +1410,27 @@ p {
         }
     }
 }
+/*=================================================================*/
+.video-16x9 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
 
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.video-9x16 {
+    iframe {
+        aspect-ratio: 9 / 16;
+        z-index: 1;
+        pointer-events: auto;
+    }
+}
 
 /*=================================================================*/
 .scroll::-webkit-scrollbar-track {

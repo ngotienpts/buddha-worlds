@@ -48,6 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý ẩn hiện full nội dung
+    function handleShowFullContent() {
+        const fullContents = document.querySelectorAll(".js__extendContainer");
+        if (fullContents.length === 0) return;
+        fullContents.forEach((fullContent) => {
+            var btn = fullContent.querySelector(".js__extendBtn");
+            if (!btn) return;
+
+            btn.onclick = function() {
+                fullContent.classList.toggle('full')
+                if (fullContent.classList.contains('full')) {
+                    this.innerText = 'Thu gọn';
+                } else {
+                    this.innerText = 'Xem thêm';
+                }
+            }
+            
+        });
+    }
     // Xử lý upload file
      function handleUploadFile() {
         const inputs = document.querySelectorAll( '.js__inputFile' );
@@ -644,6 +663,135 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý cuộn video short
+    function slideVerticalShortVideo() {
+        const container = document.querySelector(".js__shortVideoContainer");
+        if (!container) return;
+        document.body.style.overflow = 'hidden';
+
+        const list = container.querySelector(".js__shortList");
+        const items = container.querySelectorAll(".js__shortItem");
+        const prevBtn = container.querySelector(".js__prevShort");
+        const nextBtn = container.querySelector(".js__nextShort");
+
+
+        if (!list || items.length === 0) return;
+
+        let currentIndex = 0;
+        let isMoving = false; // Biến khóa để chống click liên tục
+
+        // --- 1. Quản lý Video (Play/Pause) ---
+        const updateVideoState = () => {
+            items.forEach((item, index) => {
+                const iframe = item.querySelector("iframe");
+                if (!iframe) return;
+
+                let src = iframe.getAttribute("src");
+                const isTarget = index === currentIndex;
+                
+                // Chỉ thực hiện gán lại src nếu trạng thái autoplay thay đổi
+                if (isTarget && src.includes("autoplay=0")) {
+                    iframe.src = src.replace("autoplay=0", "autoplay=1");
+                } else if (!isTarget && src.includes("autoplay=1")) {
+                    iframe.src = src.replace("autoplay=1", "autoplay=0");
+                }
+            });
+        };
+
+        // --- 2. Xử lý Cuộn ---
+        const scrollToVideo = (index) => {
+            if (isMoving) return; // Nếu đang cuộn thì bỏ qua click mới
+            isMoving = true;
+            
+            currentIndex = index;
+
+            // Tính toán khoảng cách chuẩn xác (bao gồm cả Gap/Margin)
+            const firstRect = items[0].getBoundingClientRect();
+            let stepHeight = firstRect.height;
+
+            if (items.length > 1) {
+                const secondRect = items[1].getBoundingClientRect();
+                stepHeight = secondRect.top - firstRect.top;
+            }
+
+            const translateY = -(currentIndex * stepHeight);
+            list.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
+            list.style.transform = `translateY(${translateY}px)`;
+
+            updateVideoState();
+
+            // Mở khóa sau khi hiệu ứng transition kết thúc (0.6s)
+            setTimeout(() => { isMoving = false; }, 600);
+        };
+
+        // --- 3. Khởi tạo Nút Xem thêm (Lồng vào khởi tạo chung) ---
+        const initExtendButtons = () => {
+            const extendContainers = document.querySelectorAll(".js__extendContainerSecondary");
+            extendContainers.forEach((ext) => {
+                const btn = ext.querySelector(".js__extendBtn");
+                if (!btn) return;
+                btn.onclick = function() {
+                    ext.classList.toggle('full');
+                    this.innerText = ext.classList.contains('full') ? 'Thu gọn' : 'Xem thêm';
+                };
+            });
+        };
+
+        // --- 4. Gán sự kiện Điều hướng ---
+        if (nextBtn) {
+            nextBtn.onclick = () => {
+                const nextIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                scrollToVideo(nextIndex);
+            };
+        }
+
+        if (prevBtn) {
+            prevBtn.onclick = () => {
+                const prevIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+                scrollToVideo(prevIndex);
+            };
+        }
+
+
+        // Chạy khởi tạo
+        initExtendButtons();
+        updateVideoState();
+    }
+
+     // xử lý sự kiện active
+    function handleActiveElement() {
+        const activeElements = document.querySelectorAll('.js__activeElement')
+        if (activeElements.length === 0) return;
+        
+        activeElements.forEach((activeElement)=>{
+            
+            activeElement.onclick = function() {
+                this.classList.toggle('active')
+            }
+        })
+    }
+     // xử lý sự kiện active multi element
+    function handleActiveMultiElement() {
+        const activeMultiContainers = document.querySelectorAll('.js__activeMultiContainer')
+        if (activeMultiContainers.length === 0) return;
+        
+        
+        activeMultiContainers.forEach((activeMultiContainer)=>{
+            
+            const activeMultiElements = activeMultiContainer.querySelectorAll('.js__activeMultiItem')
+            
+            if (activeMultiElements.length === 0) return;
+
+            activeMultiElements.forEach((activeElement)=>{
+
+                activeElement.onclick = function() {
+                    activeMultiContainer.querySelector('.js__activeMultiItem.active').classList.remove('active')
+                    this.classList.add('active');
+                }
+            })
+           
+        })
+    }
 
 
     // Khởi tạo fancybox
@@ -696,7 +844,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Xử lý sự kiện khi cuộn trang
     function handleWindowScroll() {
         handleStickyHeader();
-        handleBackTopVisibility()
+        handleBackTopVisibility();
+        if (typeof scrollToVideo === 'function') {
+            const list = document.querySelector(".js__shortList");
+            if (list) list.style.transition = "none"; 
+            
+            scrollToVideo(currentIndex);
+        }
+        
     }
 
     // Khởi tạo tất cả các chức năng
@@ -705,6 +860,9 @@ document.addEventListener("DOMContentLoaded", function () {
         handleShowContent();
         handleMenuMobile();
         initStickyContent();
+        handleShowFullContent();
+        slideVerticalShortVideo();
+        handleActiveElement();
         // slide
         initSliderFreeItems();
         initSliderOneItems();

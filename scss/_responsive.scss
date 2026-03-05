@@ -52,6 +52,14 @@
     // --------------------------------------------------------------------index
 
     // --------------------------------------------------------------------cate
+    // ---------------------------------------------------------------digital library
+    .digital-library-primary {
+        &__top {
+            .article-content {
+                padding-left: 32px;
+            }
+        }
+    }
 
     // --------------------------------------------------------------------detail
 
@@ -135,6 +143,7 @@
     }
 
     // --------------------------------------------------------------------cate
+    
 
     // --------------------------------------------------------------------detail
 
@@ -499,6 +508,9 @@
         padding-left: 15px;
         padding-right: 15px;
     }
+    .justify-sm-center {
+        justify-content: center;
+    }
 
     // --------------------------------------------------------------------header
 
@@ -529,6 +541,47 @@
 
    
     // --------------------------------------------------------------------cate
+    // ----------------------------------------------------------------digital library
+    .digital-library-primary {
+        &__top {
+            .article-img {
+                width: 120px;
+                height: 160px;
+                margin: auto;
+            }
+            .article-content {
+                padding-left: 0;
+                padding-top: 24px;
+            }
+            .article-title {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .article-action {
+                &__btn {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .btn-left,
+                    .btn-right {
+                        flex: 1;
+                        text-align: center;
+                        justify-content: center;
+                    }
+                    
+                }
+            }
+            .article-tick {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 24px;
+                margin-left: 0;
+            }
+        }
+    }
 
     // --------------------------------------------------------------------detail
     p + p {
