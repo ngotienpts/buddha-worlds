@@ -108,6 +108,9 @@ p {
 .font-noto-sans {
     font-family: "Noto Sans", sans-serif;
 }
+.font-roboto {
+    font-family: "Roboto", sans-serif;
+}
 
 
 /*===========================================================================*/
@@ -147,6 +150,9 @@ p {
 }
 .w-21 {
     width: 21%;
+}
+.w-28 {
+    width: 28%;
 }
 .w-30 {
     width: 30%;
@@ -1359,8 +1365,14 @@ p {
 .text-uppercase {
     text-transform: uppercase;
 }
+.text-capitalize {
+    text-transform: capitalize;
+}
 .shadow {
     box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.1)
+}
+.shadow-2 {
+    box-shadow: 0 0 #000,0px 1px 2px 0px rgba(21 21 21 / 0.08);
 }
 
 .w-wrapper {
@@ -1607,4 +1619,7 @@ p {
 }
 .border-l-ee {
     border-left: 1px solid #eee;
+}
+.border-b-f0 {
+    border-bottom: 1px solid #f0f0f0;
 }

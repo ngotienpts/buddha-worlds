@@ -1599,208 +1599,607 @@
         <!-- main -->
         <main id="main" class="main">
             <!-- primary -->
-            <section class="digital-library-primary relative z-20 over-hidden bg-white w-wrapper js__changeTab">
-                <!-- bg -->
-                <div class="digital-library-primary__bg">
-                    <img src="./images/webp/5.webp" alt="">
-                </div>
-                <!-- end bg -->
-                <div class="digital-library-primary__container w-1280 pt-24 pb-32 relative z-10">
-                    <!-- bredcumb -->
-                    <ul class="breadcrumb-tertiary__list">
-                        <li class="breadcrumb-tertiary__item">
-                            <a href="#" class="breadcrumb-tertiary__link fs-14 fw-500 font-noto-sans">Truyện</a>
-                        </li>
-                        <li class="breadcrumb-tertiary__item">
-                            <a href="#" class="breadcrumb-tertiary__link fs-14 fw-500 font-noto-sans">Thư viện số</a>
-                        </li>
-                        <li class="breadcrumb-tertiary__item">
-                            <a href="#" class="breadcrumb-tertiary__link fs-14 fw-500 font-noto-sans">Tỏa Ánh Từ Quang</a>
-                        </li>
-                    </ul>
-                    
-                    <!-- end bredcumb -->
-
-                    <!-- top -->
-                    <div class="digital-library-primary__top my-32">
-                        <!-- article -->
-                        <div class="article d-3xl-flex d-sm-block">
-                            <!-- img -->
-                            <div class="article-img flex-0">
-                                <div class="article-img__bg-1"></div>
-                                <div class="article-img__bg-2"></div>
-                                <div class="article-img__bg-3">
-                                    <img src="./images/webp/5.webp" alt="">
-                                </div>
-                            </div>
-                            <!-- end img -->
-
-                            <!-- content -->
-                            <div class="article-content flex-1">
-                                <!-- title -->
-                                <h1 class="article-title fs-36 fw-600 text-white border-b-636 pb-16 mb-16"><span>Tỏa ánh từ quang</span></h1>
-                                <!-- end title -->
-                                <!-- info -->
-                                <div class="article-info fs-14 text-white-f0 font-noto-sans border-b-636 pb-16 mb-16">
-                                    <ul class="article-info__list">
-                                        <li class="article-info__item d-3xl-flex items-center mb-16">
-                                            <div class="article-info__text flex-0 w-100px">Danh mục:</div>
-                                            <div class="article-info__category flex-1 ml-16 d-3xl-flex items-center flex-wrap"><span class="item">Truyện</span><span class="item">Sách</span></div>
-                                        </li>
-                                        <li class="article-info__item d-3xl-flex items-center mb-16">
-                                            <div class="article-info__text flex-0 w-100px">Xuất bản:</div>
-                                            <div class="article-info__text flex-1 ml-16 d-3xl-flex items-center flex-wrap"><span>2025</span></div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- end info -->
-                                <!-- des -->
-                                <div class="article-des d-3xl-flex items-center justify-sm-center mt-8 gap-32 mb-16">
-                                    <!-- item -->
-                                    <div class="article-des__item d-3xl-flex items-center">
-                                        <div class="item-icon flex-0 icon-20 mr-8">
-                                            <img src="./images/svg/document-w.svg" alt="">
-                                        </div>
-                                        <div class="item-text fs-14 text-white font-noto-sans fw-600">
-                                            <span>111 chương</span>
-                                        </div>
-                                    </div>
-                                    <!-- end item -->
-                                    <!-- item -->
-                                    <div class="article-des__item d-3xl-flex items-center">
-                                        <div class="item-icon flex-0 icon-20 mr-8">
-                                            <img src="./images/svg/eye-w.svg" alt="">
-                                        </div>
-                                        <div class="item-text fs-14 text-white font-noto-sans fw-600">
-                                            <span>10624 lượt xem</span>
-                                        </div>
-                                    </div>
-                                    <!-- end item -->
-                                </div>
-                                <!-- end des -->
-                                <!-- action -->
-                                <div class="article-action mt-32 d-3xl-flex items-center d-sm-block">
-                                    <div class="article-action__btn fs-14 fw-600 d-3xl-flex item-text text-gray-1f font-noto-sans">
-                                        <a href="#" class="btn-left">Đọc bản đầy đủ</a>
-                                        <div class="btn-right js__fastRead">Đọc tóm tắt</div>
-                                    </div>
-                                    <div class="article-tick js__activeElement">
-                                        <div class="hidden tick d-3xl-flex items-center justify-center">
-                                            <div class="article-tick__icon flex-0 icon-20 mr-8">
-                                                <img src="./images/svg/bookmark-w.svg" alt="">
-                                            </div>
-                                            <span class="article-tick__text fs-14 text-white font-noto-sans fw-600">Đánh dấu</span>
-                                        </div>
-                                        <div class="hidden not-tick d-3xl-flex items-center justify-center">
-                                            <div class="article-tick__icon flex-0 icon-20 mr-8">
-                                                <img src="./images/svg/not-bookmark-w.svg" alt="">
-                                            </div>
-                                            <span class="article-tick__text fs-14 text-white font-noto-sans fw-600">Bỏ đánh dấu</span>
-
-                                            <div class="tick-success fs-14 font-noto-sans">
-                                                Đánh dấu thành công
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end action -->
-                            </div>
-                            <!-- end content -->
-                        </div>
-                        <!-- end article -->
-                    </div>
-                    <!-- end top -->
-
-                    <!-- bot -->
-                    <div class="digital-library-primary__bot d-3xl-flex d-md-block gap-32 bg-white border-8 py-20 px-32 p-md-15">
+            <section class="detail-primary relative z-20 over-hidden bg-white w-wrapper">
+                <div class="detail-primary__container w-1280 py-24 relative z-10">
+                    <div class="detail-primary__content block-tertiary js__stickyContainer">
                         <!-- left -->
-                        <div class="digital-library-primary__left flex-1">
-                            <!-- heading -->
-                            <div class="lecture-children-two-primary__heading d-3xl-flex items-center mb-20 border-b-e0">
-                                <h3 class="heading-item fs-20 text-gray-323 fw-600 active js__tabItem active">Tóm tắt sách</h3>
-                                <h3 class="heading-item fs-20 text-gray-323 fw-600 js__tabItem">Mục lục</h3>
-                            </div>
-                            <!-- end heading -->
-                            <!-- content -->
-                            <div class="left-content pb-16">
-                                <!-- pane -->
-                                <div class="left-content__pane pane-summary hidden active js__tabPane">
-                                    <h3 class="pane-title fs-18 text-gray-323 fw-600"><span>Tóm tắt</span></h3>
-                                    <div class="pane-content font-noto-sans fs-16 text-gray-323 mt-8">
-                                        <p>Thông tin dịch giả:</p>
-                                        <p>Tỳ Kheo Ni: Thích Nữ Diệu Không</p>
+                        <div class="detail-primary__left block-tertiary__left border-r-ee border-md-r-0 js__stickyLeft">
+                            <!-- top -->
+                            <div class="detail-primary__top">
+                                <h1 class="detail-title">Xuân thật đẹp trong văn hóa dân gian và thi ca Việt</h1>
+                                <div class="detail-info">
+                                    <span class="detail-info__cate">Tạp chí nghiên cứu Phật Học</span>
+                                    <span class="detail-info__time">18/02/2026</span>
+                                </div>
+                                <!-- content -->
+                                <div class="detail-content">
+                                    <div id="explus-editor">
+                                        <p>
+                                            <strong>Mùa Xuân</strong> trong văn hoá Việt không chỉ là sự luân chuyển của
+                                            thời tiết, mà là một cấu trúc biểu tượng được hình thành qua nhiều lớp ký
+                                            ức, nghi lễ và mỹ cảm dân gian. Trong không gian ấy, những dấu hiệu quen
+                                            thuộc như bánh chưng, câu chúc đầu năm, hay giai điệu vang lên từ ca khúc và
+                                            thi ca… đều trở thành những “ngôn ngữ văn hoá” giúp cộng đồng gợi nhớ về
+                                            nguồn cội và nuôi dưỡng tinh thần năm mới.
+                                        </p>
+                                        <p>
+                                            Khi được soi chiếu qua lăng kính Phật học, như các khái niệm duyên khởi, vô
+                                            thường, hiếu đạo hay tâm hỷ, những biểu tượng Tết vốn mang tính sinh hoạt
+                                            cộng đồng lại bộc lộ thêm những tầng nghĩa sâu hơn: gợi mở sự tỉnh thức,
+                                            nuôi dưỡng lòng biết ơn và làm hiển lộ mạch tuệ trong đời sống thường nhật.
+                                            Điều đó cho thấy mùa Xuân không chỉ là thời khắc đổi mới của thiên nhiên, mà
+                                            còn là một cơ hội để mỗi người trở về với tâm Xuân, tươi sáng, tỉnh giác và
+                                            đầy hiếu hạnh.
+                                        </p>
+                                        <p>
+                                            Bài viết này phân tích ba trường hợp điển hình trong không gian Xuân, từ ca
+                                            khúc thiếu nhi, thơ Nôm trào phúng đến nỗi lòng trong Truyện Kiều, nhằm làm
+                                            rõ cách mùa Xuân vừa hiện hữu như một thực hành văn hoá, vừa vận hành như
+                                            một thực tập nội tâm theo tinh thần Phật giáo.
+                                        </p>
+                                        <p>
+                                            Qua ba phân tích điển hình, bài cho thấy mùa Xuân vừa củng cố truyền thống
+                                            cộng đồng, vừa khơi mở những chiều kích tuệ giác trong tư tưởng Phật giáo.
+                                        </p>
+                                        <p>
+                                            Trong bối cảnh ấy, trường hợp đầu tiên cần được khảo sát là hình ảnh mùa
+                                            Xuân trong ca khúc thiếu nhi, nơi những biểu tượng dân gian hiện lên với
+                                            ngôn ngữ trong trẻo và giàu tính giáo dục.
+                                        </p>
+                                        <figure>
+                                            <img
+                                                alt="Hình minh họa. Nguồn: Internet"
+                                                src="./images/2.jpg"
+                                                title="Hình minh họa. Nguồn: Internet"
+                                            />
+                                        </figure>
+                                        <h2>
+                                            Biểu tượng Tết và tinh thần Phật giáo trong “Bánh Chưng Xanh”
+                                        </h2>
+                                        <p>
+                                            Hai câu hát đầu tiên, từ ca khúc do Nghệ sĩ Phi Long sáng tác:
+                                        </p>
+                                        <p align="center"><em>Bánh chưng xanh bên dưa hấu đỏ,</em></p>
+                                        <p align="center"><em>Cành mai vàng bên cành đào tươi</em></p>
+                                        <p>
+                                            Những hình ảnh: bánh chưng xanh, dưa hấu đỏ, mai vàng, đào tươi, đều là
+                                            những biểu tượng mang tính ký hiệu học của Tết Việt.
+                                        </p>
+                                        <p>
+                                            Trong giáo lý Phật giáo, mọi pháp đều do duyên khởi, mọi vẻ đẹp đều từ sự
+                                            hội tụ của nhiều nhân duyên. Nhìn Tết qua lăng kính duyên khởi, ta thấy rõ:
+                                            một mùa xuân hiện hữu là nhờ những ân tình âm thầm của nhiều thế hệ, từ
+                                            người trồng lúa, người gói bánh, người giữ lửa văn hóa, đến mái nhà nhỏ nơi
+                                            gia đình sum họp.
+                                        </p>
+                                        <p>Ca khúc được viết tiếp cùng những câu hát:</p>
+                                        <p align="center"><em>Tết năm nay bé thêm một tuổi</em></p>
+                                        <p align="center"><em>Chúc ông bà sức khỏe dồi dào.</em></p>
+                                        <p align="center"><em>Chúc ba mẹ sức khỏe nhiều nhiều.</em></p>
+                                        <p align="center"><em>Chúc anh chị thương bé nhiều nhiều…</em></p>
+                                        <p>
+                                            …gợi lại truyền thống chúc Tết, nghi thức gia đình mang tính giáo dưỡng và
+                                            kết nối thế hệ. Từ một góc nhìn văn hóa học, chúc Tết là cách để trẻ nhỏ
+                                            được tiếp nhận nếp nhà, học cách bày tỏ tình cảm và lòng kính trọng.
+                                        </p>
+                                        <p>&nbsp;</p>
+                                        <figure>
+                                            <img
+                                                alt="Hình minh họa. Nguồn: Internet"
+                                                src="./images/2.jpg"
+                                                title="Hình minh họa. Nguồn: Internet"
+                                            />
+                                        </figure>
+                                        <p>
+                                            Trong Phật giáo, Hiếu được xem là phẩm hạnh nền tảng. Vì vậy, lời chúc hồn
+                                            nhiên trong bài hát không chỉ là nghi thức lễ Tết, mà còn là dấu hiệu của sự
+                                            tiếp nối đạo lý, của một không gian gia đình nuôi dưỡng lòng biết ơn. Khi
+                                            trẻ biết gửi lời chúc, khi cả nhà cùng trao nhau lời lành, đó cũng là lúc
+                                            hạt giống thiện được gieo vào tâm thức.
+                                        </p>
+                                        <p>
+                                            Câu hát cuối “n<em>hưng bé lớn rồi bé không thích lì xì” </em>tạo nên nét
+                                            duyên đáng yêu của bài hát. Trong đời sống hiện đại, phong tục lì xì đôi khi
+                                            bị đặt nặng vật chất, khiến ý nghĩa tinh thần, lời chúc lành và mong cầu
+                                            bình an bị phai nhạt. Sự “không thích lì xì” của trẻ thơ trong bài hát vì
+                                            thế lại mang ý nghĩa nhắc nhở: Ở đây không phải từ chối tiền mừng tuổi (lì
+                                            xì), mà là sự hồn nhiên không nặng về vật chất. Dưới góc nhìn Phật giáo, đây
+                                            là biểu hiện của tâm tri túc - biết đủ, không khởi tham cầu.
+                                        </p>
+                                        <p>
+                                            Nhìn lại từ bài hát “Bánh Chưng Xanh”, ta có thể nhận ra những đường nét
+                                            tinh tế mà mùa xuân Việt luôn hàm chứa: sắc Tết truyền thống, mối gắn kết
+                                            gia đình và đạo lý sống biết tri ân. Bài hát thiếu nhi, tuy ngắn gọn, nhưng
+                                            lại chở theo trọn vẹn tinh thần ấy như một tiếng chuông nhỏ nhắc người lớn
+                                            quay về những giá trị chân thực và bền vững.
+                                        </p>
+                                        <h2>Tâm Xuân trong thơ Hồ Xuân Hương</h2>
+                                        <figure>
+                                            <img
+                                                alt="Hình minh họa. Nguồn: Internet"
+                                                src="./images/2.jpg"
+                                                title="Hình minh họa. Nguồn: Internet"
+                                            />
+                                        </figure>
+                                        <p>
+                                            Từ trước đến nay đã có hàng trăm, thậm chí hàng ngàn công trình, bài viết
+                                            nghiên cứu về “thơ Hồ Xuân Hương”. Tuy nhiên, cách tiếp cận thơ bà dưới lăng
+                                            kính Phật học để khám phá chiều sâu “tâm Xuân” dường như vẫn còn ít được
+                                            khai triển.
+                                        </p>
+                                        <p>
+                                            Trong khuôn khổ bài viết, từ góc nhìn riêng, tác giả chia sẻ phân tích hai
+                                            bài thơ “Bánh trôi nước” và “Mời trầu”, để cùng tìm hiểu ngụ ý sâu xa
+                                            <em>“Từ nghịch lý thế tục đến tinh thần giải thoát” </em>trong hồn thơ “Bà
+                                            chúa thơ Nôm”.
+                                        </p>
+                                        <p>
+                                            Nhắc đến Hồ Xuân Hương, người ta nhớ ngay đến chất trào phúng và phóng túng.
+                                            Song, chính trong sự thế tục ấy ẩn chứa góc nhìn rất thấu lý vô thường, điều
+                                            mà ta thấy Phật giáo như một chân lý luôn mở ra sự tỉnh thức:
+                                            <em>Nghịch lý và thế tục ở đây</em>, chính như những môn học của vô thường
+                                            vậy.
+                                        </p>
+                                        <p>
+                                            <strong><em>Tiếng cười phá chấp và tinh thần vô úy</em></strong>
+                                        </p>
+                                        <p>Trong bài Mời trầu, Hồ Xuân Hương viết:</p>
+                                        <p align="center"><em>“Quả cau nho nhỏ miếng trầu hôi,</em></p>
+                                        <p align="center"><em>Này của Xuân Hương mới quệt rồi”</em></p>
+                                        <p>
+                                            Hai câu thơ mộc mạc, dân dã mà tươi rói sắc Xuân, như một nụ cười tinh
+                                            nghịch phá vỡ những khuôn sáo xã hội. Đó là tiếng cười phá chấp, tinh thần
+                                            dám là chính mình, dám đối diện ánh nhìn thị phi mà không hề e sợ. Ẩn dưới
+                                            giọng điệu hóm hỉnh ấy là một bản lĩnh vô úy rất gần với tinh thần Phật học:
+                                            cái khiến con người sợ hãi không nằm ở hoàn cảnh bên ngoài, mà chính ở chấp
+                                            niệm do tâm tạo tác.
+                                        </p>
+                                        <p>Hai câu kế tiếp:</p>
+                                        <p align="center"><em>“Có phải duyên nhau thì thắm lại,</em></p>
+                                        <p align="center"><em>Đừng xanh như lá, bạc như vôi”.</em></p>
+                                        <p>
+                                            Bà bộc bạch quan niệm sống dựa trên nhân duyên rất rõ ràng và thấm đượm chất
+                                            thiền: Nếu có duyên, tình cảm sẽ tự nhiên kết nối, “thắm lại” như sắc Xuân
+                                            hội tụ. Nếu chưa đủ duyên, cũng đừng vội “bạc như vôi”, đừng phụ phàng nhau
+                                            mà tạo nghiệp; nhưng cũng đừng “xanh như lá”, vì lá rồi cũng tàn.
+                                        </p>
+                                        <figure>
+                                            <img
+                                                alt="Hình minh họa. Nguồn: Internet"
+                                                src="./images/2.jpg"
+                                                title="Hình minh họa. Nguồn: Internet"
+                                            />
+                                        </figure>
+                                        <p>
+                                            Và cũng chính ở đó, ta thấy sắc Xuân trong thơ Hồ Xuân Hương không chỉ là
+                                            màu của đất trời, mà còn là nhịp thở của vô thường, nơi mỗi cuộc gặp gỡ đều
+                                            mang trong mình một mầm khởi đầu mới.
+                                        </p>
+                                        <p>
+                                            Mọi sự vốn vô thường, hiểu được vậy, lòng nhẹ tựa gió Xuân, tình đời thêm
+                                            hiền hòa và thấu cảm.
+                                        </p>
+                                        <p>
+                                            Cái tục, cái ngạo, cái hóm duyên trong thơ bà không nhằm gây sốc, mà như một
+                                            cách lật ngược định kiến xã hội; như tiếng cười của người đã nhìn thấy vô
+                                            thường, đã hiểu sự giả tạm của những khuôn phép ép buộc con người.
+                                        </p>
+                                        <p>
+                                            Bởi thế, tiếng cười ấy vừa tươi rói như lộc non đầu mùa, vừa thoảng chút
+                                            trầm tư, như muốn nhắc ta rằng mọi khuôn thước rồi cũng tan vào gió Xuân mà
+                                            thôi.
+                                        </p>
+                                        <p>
+                                            <strong><em>Nghịch lý thế tục như một tấm gương nhân sinh</em></strong>
+                                        </p>
+                                        <p>
+                                            Nếu như ở “Mời Trầu”, chỉ là “chút tình riêng”, thì trong “Bánh Trôi nước”,
+                                            Hồ Xuân Hương dường như cương nghị cùng tiếng nói góp phần phá vỡ định kiến
+                                            về thân phận người phụ nữ. Trong hai câu thơ đầu bà viết:
+                                        </p>
+                                        <p align="center"><em>“Thân em vừa trắng lại vừa tròn,</em></p>
+                                        <p align="center"><em>Bảy nổi ba chìm với nước non”.</em></p>
+                                        <p>
+                                            Đây vừa là lời tự sự vừa là tiếng nói chung cho thân phận người phụ nữ dưới
+                                            chế độ lễ giáo nặng nề. Tuy nhiên, đến hai câu thơ tiếp theo, điều đáng nói
+                                            là dù bấp bênh giữa cuộc đời, Hồ Xuân Hương cho thấy người phụ nữ Việt trong
+                                            chế độ Phong kiến vẫn có sự tự tin đầy kiêu hãnh:
+                                        </p>
+                                        <p align="center"><em>“Rắn nát mặc dầu tay kẻ nặn,</em></p>
+                                        <p align="center"><em>Mà em vẫn giữ tấm lòng son”.</em></p>
+                                        <p>
+                                            Chính câu thơ này mở ra chiều sâu Phật học: “giữ lòng son” chính là giữ tâm
+                                            không vấy bẩn bởi hoàn cảnh, như người tu giữ tâm giữa vô thường biến động.
+                                            Cũng từ những vần thơ rất đời ấy, một con đường khác mở ra: con đường chiếu
+                                            soi vào chính mình qua tiếng cười và tự cảm, một lối quán niệm gần gũi với
+                                            tinh thần thiền hơn ta vẫn nghĩ.
+                                        </p>
+                                        <p>
+                                            Và hình tượng “mặc dầu tay kẻ nặn” tưởng như là cam chịu kia không phải là
+                                            khuất phục, mà là bản lĩnh vượt lên, tự cảm hóa chính mình để nội tâm được
+                                            giải thoát.
+                                        </p>
+                                        <p>
+                                            <strong><em>Nụ cười như phương tiện quán chiếu</em></strong>
+                                        </p>
+                                        <p>
+                                            Nụ cười, trong đạo Phật, không chỉ là biểu hiện cảm xúc mà còn là
+                                            <strong>phương tiện quán chiếu</strong>: một khoảnh khắc dừng lại để thấy rõ
+                                            bản chất của đời sống trong sự nhẹ nhàng và tỉnh thức.
+                                        </p>
+                                        <p>
+                                            Khi đặt bên cạnh tiếng cười trào lộng của Hồ Xuân Hương, ta nhận ra sự gặp
+                                            gỡ thú vị: cả hai đều dùng nụ cười như một cách soi rọi vào những nghịch lý
+                                            của cuộc đời, để từ đó đánh thức cái nhìn thâm trầm và nhân hậu hơn.
+                                        </p>
+                                        <h2>Nàng Xuân “Phật giáo” trong trích đoạn Truyện Kiều</h2>
+                                        <figure>
+                                            <img
+                                                alt="Hình minh họa tạo bởi AI"
+                                                src="./images/webp/6.webp"
+                                                title="Hình minh họa tạo bởi AI"
+                                            />
+                                            <figcaption>Hình minh họa tạo bởi AI</figcaption>
+                                        </figure>
+                                        <p>Trong đoạn thơ “Cảnh ngày Xuân”, Nguyễn Du viết:</p>
+                                        <p align="center"><em>Ngày xuân con én đưa thoi,</em></p>
+                                        <p align="center"><em>Thiều quang chín chục đã ngoài sáu mươi.</em></p>
+                                        <p align="center"><em>Cỏ non xanh tận chân trời,</em></p>
+                                        <p align="center"><em>Cành lê trắng điểm một vài bông hoa.</em></p>
+                                        <p align="center"><em>Thanh minh trong tiết tháng ba,</em></p>
+                                        <p align="center"><em>Lễ là tảo mộ hội là đạp thanh.</em></p>
+                                        <p align="center"><em>Gần xa nô nức yến anh,</em></p>
+                                        <p align="center"><em>Chị em sắm sửa bộ hành chơi xuân.</em></p>
+                                        <p>
+                                            Những câu thơ mở đầu của đoạn trích Truyện Kiều đưa ta bước vào không gian
+                                            mùa xuân thanh tân và tinh khiết. <em>“Ngày xuân con én đưa thoi”</em> không
+                                            chỉ là hình ảnh tả thực về đàn én chao liệng mà còn là biểu tượng văn hóa
+                                            dân gian của sự trở về, khởi đầu và tin vui. Với người Việt, én về là báo
+                                            hiệu năm mới an lành; dưới lăng kính Phật giáo, đây còn là nhắc nhở về vô
+                                            thường: mùa Xuân đẹp đẽ nhưng ngắn ngủi, một lần nữa quay lại trong dòng
+                                            sinh diệt vô tận.
+                                        </p>
+                                        <p>
+                                            <em>“Thiều quang chín chục đã ngoài sáu mươi”</em> gợi ánh sáng xuân chan
+                                            hòa, đẹp nhất trong khoảng trời đất. Thi hào dùng cách nói ước lệ để diễn tả
+                                            mùa Xuân đã đi được hai phần ba chặng đường, khoảnh khắc vừa tròn đầy vừa
+                                            phảng phất tiếc nuối. Nơi đây, tinh thần dân gian giao thoa với giáo lý Phật
+                                            giáo về sự trôi chảy của thời gian: mọi vẻ đẹp đều đang trong quá trình biến
+                                            dịch và chính sự dịch chuyển ấy tạo nên giá trị của hiện tại. Mỗi phút giây
+                                            của mùa xuân đều quý, như từng sát na của đời sống.
+                                        </p>
+                                        <p>
+                                            Cảnh vật mở rộng theo chiều sâu của thị giác qua hai câu thơ:
+                                            <em>“Cỏ non xanh tận chân trời/Cành lê trắng điểm một vài bông hoa”.</em>
+                                            Tác giả phối sắc xanh - trắng mảnh mai mà trang nhã tạo nên bức tranh vừa
+                                            thanh khiết vừa tinh tế. Văn hóa dân gian Việt Nam luôn trân trọng vẻ đẹp
+                                            của tự nhiên, coi đó là dấu hiệu của phúc lộc, của năm mới nảy nở. Dưới ánh
+                                            nhìn của đạo Phật, cỏ non và hoa lê lại gợi niệm về sự sinh khởi: từ trong
+                                            mùa Đông tàn, mầm sống bật dậy, biểu hiện quy luật “sinh - trụ - dị - diệt”.
+                                            Mọi hương sắc mùa Xuân đều là pháp vô ngã, không thuộc về ai, nhưng lại
+                                            khiến lòng người nhẹ nhàng hơn, an trú hơn.
+                                        </p>
+                                        <figure class="entry-img center w-auto"></figure>
+                                        <p>
+                                            Khi cảnh vật đã tràn đầy sinh khí, con người bước vào với sinh hoạt
+                                            <strong>văn hóa</strong> đã thành nếp bao đời:
+                                            <em>“Thanh minh trong tiết tháng ba/Lễ là tảo mộ hội là đạp thanh”.</em> Tết
+                                            Thanh minh, trong tâm thức Việt, là thời điểm kết nối sâu sắc giữa tổ tiên
+                                            và con cháu.
+                                        </p>
+                                        <p>
+                                            Tảo mộ không chỉ là nghi lễ tri ân, mà còn là cách nhắc nhở mình về gốc rễ,
+                                            về ân nghĩa, giá trị to lớn của văn hóa dân gian. Dưới ánh sáng Phật pháp,
+                                            đây là tinh thần “báo hiếu”, “tri ân - báo ân”, phù hợp với giáo lý tứ trọng
+                                            ân. Lễ Thanh minh vì thế không còn vướng đọng buồn thương, mà trở thành nét
+                                            đẹp trong văn hóa tri ân.
+                                        </p>
+                                        <p>
+                                            “Hội là đạp thanh” - hội Xuân với những cuộc du ngoạn ngoài đồng cỏ, nơi con
+                                            người hòa mình vào cùng thiên nhiên,trời đất. Đạp thanh vốn là phong tục cổ
+                                            của Trung Hoa, nhưng khi vào văn hóa Việt đã trở thành nét vui Xuân, gắn với
+                                            tinh thần thư thái, giải thoát khỏi những nặng nề của mùa cũ. Ở đây, phong
+                                            tục dân gian gặp gỡ tinh thần Phật giáo: đi giữa đồng xanh là một dạng
+                                            “thiền hành” nhẹ nhàng, giúp thân tâm mở rộng, tiếp xúc với sự sống.
+                                        </p>
+                                        <p>
+                                            Đến hai câu thơ tiếp theo:
+                                            <em>“Gần xa nô nức yến anh/Chị em sắm sửa bộ hành chơi xuân”. </em>Yến anh
+                                            ríu rít, chị em rộn ràng, một bức tranh Xuân đậm nét nhân tình, nơi con
+                                            người hòa nhập tự nhiên một cách tự tại. Sự nô nức này không phải xô bồ mà
+                                            là niềm vui thuần khiết, tươi sáng. Quan sát từ tinh thần Phật giáo, đây là
+                                            khoảnh khắc mà ta được sống trọn vẹn với hiện tại, vui trong chừng mực,
+                                            không tham cầu quá độ - “tri túc” trong từng cuộc vui.
+                                        </p>
+                                        <p>
+                                            Toàn cảnh mùa Xuân trong đoạn thơ vì vậy không chỉ đẹp ở thiên nhiên hay
+                                            phong tục, mà còn đẹp ở chiều sâu tâm thức.
+                                        </p>
+                                        <p>
+                                            Có thể thấy, qua những ví dụ đã phân tích, với văn hóa dân gian, Xuân là
+                                            đoàn tụ; với đạo Phật, Xuân là tâm an. Trong sự giao thoa ấy, mỗi người đọc
+                                            đều cảm nhận một mùa Xuân không chỉ của đất trời, mà còn của lòng người:
+                                            <em>biết sống chậm, sống sâu và sống trong niềm tri ân.</em> Từ đó, ta cùng
+                                            đón năm mới trong sắc Xuân rạng ngời, chan hòa nhân ái và đậm tinh thần nhân
+                                            văn.
+                                        </p>
+                                        <p><strong>Tịnh Như</strong></p>
+                                        <ul>
+                                            <li>
+                                                https://tapchinghiencuuphathoc.vn/xuan-that-dep-trong-van-hoa-dan-gian-va-thi-ca-viet.html
+                                            </li>
+                                        </ul>
+
+                                        
                                     </div>
                                 </div>
-                                <!-- end pane -->
-                                <!-- pane -->
-                                <div class="left-content__pane pane-index hidden js__tabPane">
-                                    <!-- list -->
-                                    <div class="page-index__list">
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Mục lục</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 41. Phẩm thứ bảy - Tam Giả (3 Thứ Giả Lập) Phẩm thứ tám - Khuyến học (Khuyên Học)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 42. Phẩm thứ chín - Tập Tán ( Họp & Tan)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 43. Phẩm thứ chín tiếp theo - Tập Tán Tiếp theo. Phẩm thứ mười - Hành Tướng ( Sự Vận Hành Của Tướng)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 44. Phẩm thứ mười một - Huyễn Nhơn ( Người Huyễn)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 45. Phẩm thứ mười hai - Cú Nghĩa. Phẩm thứ mười ba - Kim Cang. Phẩm thứ mười bốn - Đoạn Chư Kiến (Đoạn Trừ Các Kiến) Phẩm thứ mười lăm - Phú Lâu Na.</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 46. Phẩm thứ mười sáu - Thừa Đại Thừa (Ngồi Xe Đại Thừa) Phẩm thứ mười bảy - Trang Nghiêm Phẩm thứ mười tám - Tác Vấn Thừa ( Hỏi Về Đại Thừa)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 47. Phẩm thứ mười tám tiếp theo - Tác Vấn Thừa tiếp theo</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 48. Phẩm thứ mười chín - Quảng Thừa ( Thừa Rộng Lớn)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
-                                        <!-- item -->
-                                        <a href="#" class="pane-index__item d-3xl-block p-12 border-b-f0">
-                                            <h3 class="text-1 fs-16 fw-600 text-gray-1f"><span>Quyển 49. Phẩm thứ hai mươi - Phát Thú Thập Địa ( Hướng Đến Mười Địa)</span></h3>
-                                            <p class="text-2 fs-16 font-roboto text-gray-8c mt-8">23/04/2025, 01:02</p>
-                                        </a>
-                                        <!-- end item -->
+                                <!-- end content -->
+                            </div>
+                            <!-- end top -->
+
+                            <!-- related new -->
+                            <div class="related-news mt-40">
+                                <!-- heading -->
+                                <div class="heading-primary pb-12 border-b-636">
+                                    <h2 class="heading-primary__title fs-20 fw-600 text-gray-171">
+                                        <span>Tin liên quan</span>
+                                    </h2>
+                                </div>
+                                <!-- end heading -->
+                                <!-- content -->
+                                <div class="block-seven__content mt-20">
+                                    <!-- article list pc-->
+                                    <div class="article-list last-article d-3xl-block d-md-none">
+                                        <!-- article -->
+                                        <div class="article d-3xl-flex d-md-block py-20 border-b-636">
+                                            <!-- img -->
+                                            <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
+                                                <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
+                                                    <img src="./images/2.jpg" alt="" class="">
+                                                </a>
+                                            </div>
+                                            <!-- end img -->
+                                            <!-- content -->
+                                            <div class="article-content ml-16 flex-1 ml-md-0">
+                                                <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                    <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                </h1>
+                                                <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
+                                                    <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                </div>
+                                                <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
+                                                    <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- end content -->
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article d-3xl-flex d-md-block py-20 border-b-636">
+                                            <!-- img -->
+                                            <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
+                                                <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
+                                                    <img src="./images/2.jpg" alt="" class="">
+                                                </a>
+                                            </div>
+                                            <!-- end img -->
+                                            <!-- content -->
+                                            <div class="article-content ml-16 flex-1 ml-md-0">
+                                                <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                    <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                </h1>
+                                                <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
+                                                    <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                </div>
+                                                <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
+                                                    <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- end content -->
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article d-3xl-flex d-md-block py-20 border-b-636">
+                                            <!-- img -->
+                                            <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
+                                                <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
+                                                    <img src="./images/2.jpg" alt="" class="">
+                                                </a>
+                                            </div>
+                                            <!-- end img -->
+                                            <!-- content -->
+                                            <div class="article-content ml-16 flex-1 ml-md-0">
+                                                <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                    <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                </h1>
+                                                <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
+                                                    <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                </div>
+                                                <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
+                                                    <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- end content -->
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article d-3xl-flex d-md-block py-20 border-b-636">
+                                            <!-- img -->
+                                            <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
+                                                <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
+                                                    <img src="./images/2.jpg" alt="" class="">
+                                                </a>
+                                            </div>
+                                            <!-- end img -->
+                                            <!-- content -->
+                                            <div class="article-content ml-16 flex-1 ml-md-0">
+                                                <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                    <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                </h1>
+                                                <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
+                                                    <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                </div>
+                                                <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
+                                                    <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- end content -->
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article d-3xl-flex d-md-block py-20 border-b-636">
+                                            <!-- img -->
+                                            <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
+                                                <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
+                                                    <img src="./images/2.jpg" alt="" class="">
+                                                </a>
+                                            </div>
+                                            <!-- end img -->
+                                            <!-- content -->
+                                            <div class="article-content ml-16 flex-1 ml-md-0">
+                                                <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                    <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                </h1>
+                                                <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
+                                                    <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                </div>
+                                                <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
+                                                    <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- end content -->
+                                        </div>
+                                        <!-- end article -->
                                     </div>
-                                    <!-- end list -->
+                                    <!-- end article list pc-->
+                                    <!-- article list mb-->
+                                    <div class="article-list last-article d-3xl-none d-md-block">
+                                        <!-- article -->
+                                        <div class="article py-20 border-b-636">
+                                            <!-- title -->
+                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                            </h3>
+                                            <!-- end title -->
+                                            <div class="article-inner d-3xl-flex mt-16">
+                                                <!-- img -->
+                                                <div class="article-img over-hidden border-8 flex-0 w-37">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content ml-12 flex-1">
+                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
+                                                        <span class="">28/02/2026, 11:09</span>
+                                                    </div>
+                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
+                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article py-20 border-b-636">
+                                            <!-- title -->
+                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                            </h3>
+                                            <!-- end title -->
+                                            <div class="article-inner d-3xl-flex mt-16">
+                                                <!-- img -->
+                                                <div class="article-img over-hidden border-8 flex-0 w-37">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content ml-12 flex-1">
+                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
+                                                        <span class="">28/02/2026, 11:09</span>
+                                                    </div>
+                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
+                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article py-20 border-b-636">
+                                            <!-- title -->
+                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                            </h3>
+                                            <!-- end title -->
+                                            <div class="article-inner d-3xl-flex mt-16">
+                                                <!-- img -->
+                                                <div class="article-img over-hidden border-8 flex-0 w-37">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content ml-12 flex-1">
+                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
+                                                        <span class="">28/02/2026, 11:09</span>
+                                                    </div>
+                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
+                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article py-20 border-b-636">
+                                            <!-- title -->
+                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
+                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                            </h3>
+                                            <!-- end title -->
+                                            <div class="article-inner d-3xl-flex mt-16">
+                                                <!-- img -->
+                                                <div class="article-img over-hidden border-8 flex-0 w-37">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content ml-12 flex-1">
+                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
+                                                        <span class="">28/02/2026, 11:09</span>
+                                                    </div>
+                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
+                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                    </div>
+                                    <!-- end article list mb-->
 
                                     <!-- pagination -->
-                                    <div class="pagination d-3xl-flex items-center justify-end fs-16 mt-32">
+                                    <div class="pagination d-3xl-flex items-center justify-center fs-16 mt-32">
                                         <div class="pagination-item prev">
                                             <a href="#" class="pagination-link">
                                                 <img src="./images/svg/arrow-prev-gray.svg" alt="">
@@ -1832,219 +2231,113 @@
                                     </div>
                                     <!-- end see more -->
                                 </div>
-                                <!-- end pane -->
+                                <!-- end content -->
                             </div>
-                            <!-- end content -->
+                            <!-- end related new -->
                         </div>
                         <!-- end left -->
                         <!-- right -->
-                        <div class="digital-library-primary__right flex-0 w-28 w-md-full mt-md-40">
-                            <!-- block nine -->
-                            <div class="block-nine">
-                                <!-- heading -->
-                                <div class="heading-primary pb-12 border-b-636">
-                                    <h2 class="heading-primary__title fs-20 fw-600 text-gray-171">
-                                        <span>Nội dung liên quan</span>
+                        <div class="detail-primary__right block-tertiary__right js__stickyRight mt-md-40 d-md-none">
+                            <!-- block five -->
+                            <div class="block-five">
+                                    <!-- heading -->
+                                    <h2 class="block-five__heading fs-20 text-gray-171 text-uppercase fw-700 mb-10">
+                                        <span>Tin đọc nhiều nhất</span>
                                     </h2>
-                                </div>
-                                <!-- end heading -->
+                                    <!-- end heading -->
 
-                                <!-- content -->
-                                <div class="block-nine__content mt-16">
-                                    <!-- article -->
-                                    <div class="article d-3xl-flex pb-16">
-                                        <!-- img -->
-                                        <div class="article-img flex-0 border-8">
-                                            <div class="article-img__bg-1"></div>
-                                            <div class="article-img__bg-2"></div>
-                                            <a href="#" class="article-img__bg-3">
-                                                <img src="./images/webp/5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <!-- end img -->
-                                        <!-- content -->
-                                        <div class="article-content flex-1 py-8">
-                                            <h2 class="article-title fs-16 fw-600 text-gray-323 flex-1">
-                                                <span class="fix-text2">Luật đại trí độ 2</span>
-                                            </h2>
-                                            <div class="article-public fs-12 text-gray-323 font-noto-sans mt-8">
-                                                <span>Xuất bản:</span>
-                                                <span>2025</span>
-                                            </div>
-                                            <div class="article-chapter mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/document-gray.svg" alt="">
+                                    <!-- content -->
+                                    <div class="block-five__content mt-20">
+                                        <!-- large -->
+                                        <div class="article-large">
+                                            <div class="article">
+                                                <!-- img -->
+                                                <div class="article-img over-hidden border-8">
+                                                    <a href="#" class="ratio-15x9 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
                                                 </div>
-                                                <span class="flex-1">25 Chương</span>
-                                            </div>
-                                            <div class="article-view mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/eye-gray.svg" alt="">
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content mt-12">
+                                                    <h3 class="article-title fs-14 fw-600 font-noto-sans text-gray-171 flex-1">
+                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                    </h3>
+                                                    
                                                 </div>
-                                                <span class="flex-1">10 lượt xem</span>
+                                                <!-- end content -->
                                             </div>
-                                            
                                         </div>
-                                        <!-- end content -->
+                                        <!-- end large -->
+
+                                        <!-- smalls -->
+                                        <div class="article-smalls mt-16">
+                                            <!-- article -->
+                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
+                                                <!-- content -->
+                                                <div class="article-content flex-1">
+                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
+                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                    </h3>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                                <!-- img -->
+                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                            </div>
+                                            <!-- end article -->
+                                            <!-- article -->
+                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
+                                                <!-- content -->
+                                                <div class="article-content flex-1">
+                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
+                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                    </h3>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                                <!-- img -->
+                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                            </div>
+                                            <!-- end article -->
+                                            <!-- article -->
+                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
+                                                <!-- content -->
+                                                <div class="article-content flex-1">
+                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
+                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
+                                                    </h3>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                                <!-- img -->
+                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
+                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </a>
+                                                </div>
+                                                <!-- end img -->
+                                            </div>
+                                            <!-- end article -->
+                                        </div>
+                                        <!-- end smalls -->
                                     </div>
-                                    <!-- end article -->
-                                    <!-- article -->
-                                    <div class="article d-3xl-flex pb-16">
-                                        <!-- img -->
-                                        <div class="article-img flex-0 border-8">
-                                            <div class="article-img__bg-1"></div>
-                                            <div class="article-img__bg-2"></div>
-                                            <a href="#" class="article-img__bg-3">
-                                                <img src="./images/webp/5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <!-- end img -->
-                                        <!-- content -->
-                                        <div class="article-content flex-1 py-8">
-                                            <h2 class="article-title fs-16 fw-600 text-gray-323 flex-1">
-                                                <span class="fix-text2">Luật đại trí độ 2</span>
-                                            </h2>
-                                            <div class="article-public fs-12 text-gray-323 font-noto-sans mt-8">
-                                                <span>Xuất bản:</span>
-                                                <span>2025</span>
-                                            </div>
-                                            <div class="article-chapter mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/document-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">25 Chương</span>
-                                            </div>
-                                            <div class="article-view mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/eye-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">10 lượt xem</span>
-                                            </div>
-                                            
-                                        </div>
-                                        <!-- end content -->
-                                    </div>
-                                    <!-- end article -->
-                                    <!-- article -->
-                                    <div class="article d-3xl-flex pb-16">
-                                        <!-- img -->
-                                        <div class="article-img flex-0 border-8">
-                                            <div class="article-img__bg-1"></div>
-                                            <div class="article-img__bg-2"></div>
-                                            <a href="#" class="article-img__bg-3">
-                                                <img src="./images/webp/5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <!-- end img -->
-                                        <!-- content -->
-                                        <div class="article-content flex-1 py-8">
-                                            <h2 class="article-title fs-16 fw-600 text-gray-323 flex-1">
-                                                <span class="fix-text2">Luật đại trí độ 2</span>
-                                            </h2>
-                                            <div class="article-public fs-12 text-gray-323 font-noto-sans mt-8">
-                                                <span>Xuất bản:</span>
-                                                <span>2025</span>
-                                            </div>
-                                            <div class="article-chapter mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/document-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">25 Chương</span>
-                                            </div>
-                                            <div class="article-view mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/eye-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">10 lượt xem</span>
-                                            </div>
-                                            
-                                        </div>
-                                        <!-- end content -->
-                                    </div>
-                                    <!-- end article -->
-                                    <!-- article -->
-                                    <div class="article d-3xl-flex pb-16">
-                                        <!-- img -->
-                                        <div class="article-img flex-0 border-8">
-                                            <div class="article-img__bg-1"></div>
-                                            <div class="article-img__bg-2"></div>
-                                            <a href="#" class="article-img__bg-3">
-                                                <img src="./images/webp/5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <!-- end img -->
-                                        <!-- content -->
-                                        <div class="article-content flex-1 py-8">
-                                            <h2 class="article-title fs-16 fw-600 text-gray-323 flex-1">
-                                                <span class="fix-text2">Luật đại trí độ 2</span>
-                                            </h2>
-                                            <div class="article-public fs-12 text-gray-323 font-noto-sans mt-8">
-                                                <span>Xuất bản:</span>
-                                                <span>2025</span>
-                                            </div>
-                                            <div class="article-chapter mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/document-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">25 Chương</span>
-                                            </div>
-                                            <div class="article-view mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/eye-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">10 lượt xem</span>
-                                            </div>
-                                            
-                                        </div>
-                                        <!-- end content -->
-                                    </div>
-                                    <!-- end article -->
-                                    <!-- article -->
-                                    <div class="article d-3xl-flex pb-16">
-                                        <!-- img -->
-                                        <div class="article-img flex-0 border-8">
-                                            <div class="article-img__bg-1"></div>
-                                            <div class="article-img__bg-2"></div>
-                                            <a href="#" class="article-img__bg-3">
-                                                <img src="./images/webp/5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <!-- end img -->
-                                        <!-- content -->
-                                        <div class="article-content flex-1 py-8">
-                                            <h2 class="article-title fs-16 fw-600 text-gray-323 flex-1">
-                                                <span class="fix-text2">Luật đại trí độ 2</span>
-                                            </h2>
-                                            <div class="article-public fs-12 text-gray-323 font-noto-sans mt-8">
-                                                <span>Xuất bản:</span>
-                                                <span>2025</span>
-                                            </div>
-                                            <div class="article-chapter mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/document-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">25 Chương</span>
-                                            </div>
-                                            <div class="article-view mt-8 fs-12 text-gray-8c d-3xl-flex items-center font-noto-sans">
-                                                <div class="icon-16 flex-0 mr-4">
-                                                    <img src="./images/svg/eye-gray.svg" alt="">
-                                                </div>
-                                                <span class="flex-1">10 lượt xem</span>
-                                            </div>
-                                            
-                                        </div>
-                                        <!-- end content -->
-                                    </div>
-                                    <!-- end article -->
-                                    
+                                    <!-- end content -->
                                 </div>
-                                <!-- end content -->
-                            </div>
-                            <!-- end block nine -->
+                            <!-- end block five -->
                         </div>
                         <!-- end right -->
                     </div>
-                    <!-- end bot -->
                 </div>
             </section>
             <!-- end primary -->

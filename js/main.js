@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         changTabs.forEach((changTab)=>{
             const tabs = changTab.querySelectorAll(".js__tabItem");
             const panes = changTab.querySelectorAll(".js__tabPane");
+            const fastReadBtn = changTab.querySelector(".js__fastRead"); 
 
             tabs.forEach((tab,index)=>{
                 tab.onclick = function() {
@@ -31,8 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 }
             })
+
+            if (fastReadBtn) {
+                fastReadBtn.onclick = function() {
+                    if (tabs[0]) {
+                        tabs[0].click(); 
+                    }
+                }
+            }
         })
     }
+
 
     // Xử lý video tỉ lệ 16:9
      function handleVideo_16x9() {
@@ -151,6 +161,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
       
     }
+
+    // xử lý sự kiện show hidden menu digital library
+    function handleShowHiddenDigitalLibrary() {
+    const menuDigitalContainers = document.querySelectorAll(".js__showHiddenMenuDigitalContainer");
+
+    if (menuDigitalContainers.length === 0) return;
+
+    // Hàm phụ trợ để xử lý việc khóa/mở cuộn trang
+    const toggleBodyScroll = (isActive) => {
+        if (window.innerWidth <= 992) {
+            document.body.style.overflow = isActive ? "hidden" : "";
+        } else {
+            document.body.style.overflow = ""; // Reset nếu màn hình lớn hơn 992px
+        }
+    };
+
+    menuDigitalContainers.forEach((menuDigitalContainer) => {
+        const showMenuDigital = menuDigitalContainer.querySelector(".js__buttonShowHiddenMenu");
+        const closeMenuDigital = menuDigitalContainer.querySelector(".js__closeMenuDigital");
+        const overlay = menuDigitalContainer.querySelector(".js__overlay");
+
+        showMenuDigital.onclick = function () {
+            menuDigitalContainer.classList.toggle("active");
+            const isActive = menuDigitalContainer.classList.contains("active");
+            
+            if (isActive) {
+                overlay.classList.add('active');
+            } else {
+                overlay.classList.remove('active');
+            }
+            
+            toggleBodyScroll(isActive);
+        };
+
+        const closeAll = () => {
+            menuDigitalContainer.classList.remove("active");
+            overlay.classList.remove("active");
+            toggleBodyScroll(false);
+        };
+
+        closeMenuDigital.onclick = closeAll;
+        overlay.onclick = closeAll;
+    });
+
+    // Lắng nghe sự kiện resize để reset body nếu người dùng xoay màn hình/thay đổi kích thước
+    window.addEventListener('resize', () => {
+        const anyActive = Array.from(menuDigitalContainers).some(el => el.classList.contains("active"));
+        if (window.innerWidth > 992 || !anyActive) {
+            document.body.style.overflow = "";
+        } else if (anyActive) {
+            document.body.style.overflow = "hidden";
+        }
+    });
+}
 
 
     // xử lý lấy nội dung khi chuyển slide
@@ -863,6 +927,7 @@ document.addEventListener("DOMContentLoaded", function () {
         handleShowFullContent();
         slideVerticalShortVideo();
         handleActiveElement();
+        handleShowHiddenDigitalLibrary();
         // slide
         initSliderFreeItems();
         initSliderOneItems();
