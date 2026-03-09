@@ -216,6 +216,75 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 }
 
+    // xử lý sự kiện play audio
+    function handleAudio() {
+        const audioContainers = document.querySelectorAll(".js__audioContainer");
+
+        if (audioContainers.length === 0) return;
+
+        audioContainers.forEach((audioContainer)=>{
+
+            const audio = audioContainer.querySelector('.js__audioSource');
+            const playPauseBtn = audioContainer.querySelector('.js__audioPlay');
+            const seekSlider = audioContainer.querySelector('.js__audioRange');
+            const controlIcon = audioContainer.querySelector('.js__controlIcon');
+    
+            // Paths cho Icon SVG
+            const iconPaths = {
+                play: {
+                d: "M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z",
+                viewBox: "0 0 384 512"
+                },
+                pause: {
+                d: "M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z",
+                viewBox: "0 0 320 512"
+                }
+            };
+    
+            // Hàm cập nhật giao diện thanh kéo
+            const updateUI = () => {
+                const percentage = (audio.currentTime / audio.duration) * 100 || 0;
+                seekSlider.value = percentage;
+                seekSlider.style.backgroundSize = `${percentage}% 100%`;
+            };
+    
+            // Hàm đổi Icon
+            const toggleIcon = (type) => {
+                controlIcon.setAttribute('viewBox', iconPaths[type].viewBox);
+                controlIcon.querySelector('path').setAttribute('d', iconPaths[type].d);
+            };
+    
+            // 1. Sự kiện Play/Pause
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                audio.play();
+                toggleIcon('pause');
+                } else {
+                audio.pause();
+                toggleIcon('play');
+                }
+            });
+    
+            // 2. Cập nhật thanh range khi nhạc đang phát
+            audio.addEventListener('timeupdate', updateUI);
+    
+            // 3. Khi người dùng kéo thanh range (tua nhạc)
+            seekSlider.addEventListener('input', (e) => {
+                const seekTo = (e.target.value / 100) * audio.duration;
+                audio.currentTime = seekTo;
+                updateUI(); // Cập nhật màu sắc ngay lập tức khi kéo
+            });
+    
+            // 4. Xử lý khi nhạc kết thúc
+            audio.addEventListener('ended', () => {
+                toggleIcon('play');
+                seekSlider.value = 100;
+                seekSlider.style.backgroundSize = `100% 100%`;
+            });
+        })
+
+    }
+
 
     // xử lý lấy nội dung khi chuyển slide
    function getContentPrimary(splide, container) {
@@ -581,6 +650,63 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // slider gallery primary
+    function initSliderGalleryItemsPrimary () {
+        const gallerryPrimary = document.querySelectorAll(".js__swiperGalleryContainerPrimary");
+            gallerryPrimary.forEach((item) => {
+                var sliderLarge = item.querySelector(".js__swiperGalleryLargePrimary");
+                var sliderSmall = item.querySelector(".js__swiperGallerySmallPrimary");
+                var next = item.querySelector(".swiper-button-next");
+                var prev = item.querySelector(".swiper-button-prev");
+                var pagi = item.querySelector(".swiper-pagination");
+
+                var small = new Swiper(sliderSmall, {
+                    spaceBetween: 10,
+                    slidesPerView: 2,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                    // autoplay: {
+                    //     delay: 4000,
+                    //     disableOnInteraction: false,
+                    // },
+                    loop: true,
+                    navigation: {
+                            nextEl: next || null,
+                            prevEl: prev || null,
+                    },
+                    pagination: {
+                        el: pagi || null,
+                        clickable: true,
+                    },
+                       
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 1.5,
+                        },
+                        768: {
+                            slidesPerView: 2.5,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                        1200: {
+                            slidesPerView: 3,
+                        },
+                    },
+                });
+                var large = new Swiper(sliderLarge, {
+                    spaceBetween: 10,
+                    thumbs: {
+                        swiper: small,
+                    },
+                });
+                small.on('slideChange', function () {
+                    large.slideToLoop(small.realIndex);
+                });
+               
+            });
+        }
+
 
     // Khởi tạo sticky content 
     function initStickyContent() {
@@ -928,6 +1054,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slideVerticalShortVideo();
         handleActiveElement();
         handleShowHiddenDigitalLibrary();
+        handleAudio();
         // slide
         initSliderFreeItems();
         initSliderOneItems();
@@ -937,6 +1064,7 @@ document.addEventListener("DOMContentLoaded", function () {
         initSliderFourItems();
         initSliderFiveItemsEmbla();
         initSliderFiveItems();
+        initSliderGalleryItemsPrimary();
         
         // end slide
         handleBackTop();
