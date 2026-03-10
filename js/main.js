@@ -3,44 +3,97 @@ document.addEventListener("DOMContentLoaded", function () {
     const backTop = document.querySelector("#back-top");
 
     // xử lý sự kiện chuyển tab
-    function handleChangeTab () {
-        const changTabs = document.querySelectorAll('.js__changeTab')
+    function handleChangeTab() {
+        const changTabs = document.querySelectorAll('.js__changeTab');
 
         if (changTabs.length === 0) return;
 
-        changTabs.forEach((changTab)=>{
+        changTabs.forEach((changTab) => {
             const tabs = changTab.querySelectorAll(".js__tabItem");
             const panes = changTab.querySelectorAll(".js__tabPane");
-            const fastReadBtn = changTab.querySelector(".js__fastRead"); 
+            const fastReadBtn = changTab.querySelector(".js__fastRead");
+            const arrangeContainer = changTab.querySelector(".js__arrangeContainer");
+            const getTextContent = changTab.querySelector(".js__getTextContent");
 
-            tabs.forEach((tab,index)=>{
-                tab.onclick = function() {
-                    pane = panes[index]
+            // Hàm hỗ trợ để cập nhật Layout cho Pane đang hiển thị
+            function updatePaneLayout(activePane) {
+                if (!arrangeContainer || !activePane) return;
 
-                    changTab.querySelector('.js__tabItem.active').classList.remove('active')
-                    changTab.querySelector('.js__tabPane.active').classList.remove('active')
+                const isFull = arrangeContainer.querySelector('.js__arrangeFull.active');
+                const fullContent = activePane.querySelector(".js__tabPaneChildrenFull");
+                const shrinkContent = activePane.querySelector(".js__tabPaneChildrenShrink");
 
-                    this.classList.add('active')
-                    pane.classList.add('active')
-
-                    this.scrollIntoView({
-                    behavior: 'smooth',
-                    inline: 'center',   
-                    block: 'nearest'  
-
-                    
-                });
+                if (isFull) {
+                    fullContent?.classList.add('active');
+                    shrinkContent?.classList.remove('active');
+                } else {
+                    fullContent?.classList.remove('active');
+                    shrinkContent?.classList.add('active');
                 }
-            })
+            }
 
-            if (fastReadBtn) {
-                fastReadBtn.onclick = function() {
-                    if (tabs[0]) {
-                        tabs[0].click(); 
+            // 1. Xử lý chuyển Tab
+            tabs.forEach((tab, index) => {
+                tab.onclick = function() {
+                    if (this.classList.contains('active')) return;
+
+                    const pane = panes[index];
+                    if (!pane) return;
+
+                    changTab.querySelector('.js__tabItem.active')?.classList.remove('active');
+                    changTab.querySelector('.js__tabPane.active')?.classList.remove('active');
+
+                    this.classList.add('active');
+                    pane.classList.add('active');
+
+                    // QUAN TRỌNG: Cập nhật layout cho Pane mới dựa trên nút đang active
+                    updatePaneLayout(pane);
+                }
+            });
+
+            // 2. Xử lý các nút Arrange (Full/Shrink)
+            if (arrangeContainer) {
+                const arrangeFull = arrangeContainer.querySelector('.js__arrangeFull');
+                const arrangeShrink = arrangeContainer.querySelector('.js__arrangeShrink');
+
+                if (arrangeFull) {
+                    arrangeFull.onclick = function() {
+                        this.classList.add('active');
+                        arrangeShrink?.classList.remove('active');
+                        
+                        // Cập nhật ngay lập tức cho pane đang mở
+                        const activePane = changTab.querySelector('.js__tabPane.active');
+                        updatePaneLayout(activePane);
+                    }
+                }
+
+                if (arrangeShrink) {
+                    arrangeShrink.onclick = function() {
+                        this.classList.add('active');
+                        arrangeFull?.classList.remove('active');
+
+                        const activePane = changTab.querySelector('.js__tabPane.active');
+                        updatePaneLayout(activePane);
                     }
                 }
             }
-        })
+            // 3. Xử lý show hidden tab on mobile
+            if (getTextContent) {
+                const setText = getTextContent.querySelector('.js__setText');
+
+                getTextContent.onclick = function() {
+                    getTextContent.classList.toggle('active');
+                    if (setText) {
+                        const activeTab = changTab.querySelector('.js__tabItem.active');
+                        setText.innerText = activeTab.innerText
+                    }
+                }
+            }
+
+            if (fastReadBtn) {
+                fastReadBtn.onclick = () => tabs[0]?.click();
+            }
+        });
     }
 
 
@@ -106,25 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const collapseContainers = document.querySelectorAll('.js__collapseContainer')
         if (collapseContainers.length === 0) return;
         
-        let activeItem = null;
-        
         collapseContainers.forEach((collapseContainer)=>{
             const collapses = collapseContainer.querySelector('.js__collapse')
             collapses.onclick = function() {
-                // khi item đang mở
-                if (activeItem === collapseContainer) {
-                    collapseContainer.classList.remove('active'); 
-                    activeItem = null; 
-                } else {
-                    // khi không có item nào mở
-                    if (activeItem) {
-                        activeItem.classList.remove('active');
-                    }
-                    collapseContainer.classList.add('active');
-                    activeItem = collapseContainer; 
-                    
-                }  
-                 
+                collapseContainer.classList.toggle('active'); 
             }
            
         })
@@ -164,57 +202,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // xử lý sự kiện show hidden menu digital library
     function handleShowHiddenDigitalLibrary() {
-    const menuDigitalContainers = document.querySelectorAll(".js__showHiddenMenuDigitalContainer");
+        const menuDigitalContainers = document.querySelectorAll(".js__showHiddenMenuDigitalContainer");
+        const mainElement = document.querySelector("main")
 
-    if (menuDigitalContainers.length === 0) return;
+        if (menuDigitalContainers.length === 0) return;
 
-    // Hàm phụ trợ để xử lý việc khóa/mở cuộn trang
-    const toggleBodyScroll = (isActive) => {
-        if (window.innerWidth <= 992) {
-            document.body.style.overflow = isActive ? "hidden" : "";
-        } else {
-            document.body.style.overflow = ""; // Reset nếu màn hình lớn hơn 992px
-        }
-    };
-
-    menuDigitalContainers.forEach((menuDigitalContainer) => {
-        const showMenuDigital = menuDigitalContainer.querySelector(".js__buttonShowHiddenMenu");
-        const closeMenuDigital = menuDigitalContainer.querySelector(".js__closeMenuDigital");
-        const overlay = menuDigitalContainer.querySelector(".js__overlay");
-
-        showMenuDigital.onclick = function () {
-            menuDigitalContainer.classList.toggle("active");
-            const isActive = menuDigitalContainer.classList.contains("active");
-            
-            if (isActive) {
-                overlay.classList.add('active');
+        // Hàm phụ trợ để xử lý việc khóa/mở cuộn trang và style cho main
+        const toggleLayoutState = (isActive) => {
+            // Xử lý Body Scroll
+            if (window.innerWidth <= 992) {
+                document.body.style.overflow = isActive ? "hidden" : "";
             } else {
-                overlay.classList.remove('active');
+                document.body.style.overflow = "";
             }
-            
-            toggleBodyScroll(isActive);
+
+            // Xử lý style cho Main
+            if (mainElement) {
+                if (isActive) {
+                    mainElement.style.position = "relative";
+                    mainElement.style.zIndex = "10000";
+                } else {
+                    // Chỉ xóa style nếu không còn container nào khác đang active
+                    const anyActive = Array.from(menuDigitalContainers).some(el => el.classList.contains("active"));
+                    if (!anyActive) {
+                        mainElement.style.position = "";
+                        mainElement.style.zIndex = "";
+                    }
+                }
+            }
         };
 
-        const closeAll = () => {
-            menuDigitalContainer.classList.remove("active");
-            overlay.classList.remove("active");
-            toggleBodyScroll(false);
-        };
+        menuDigitalContainers.forEach((menuDigitalContainer) => {
+            const showMenuDigital = menuDigitalContainer.querySelector(".js__buttonShowHiddenMenu");
+            const closeMenuDigital = menuDigitalContainer.querySelector(".js__closeMenuDigital");
+            const overlay = menuDigitalContainer.querySelector(".js__overlay");
 
-        closeMenuDigital.onclick = closeAll;
-        overlay.onclick = closeAll;
-    });
+            if (showMenuDigital) {
+                showMenuDigital.onclick = function () {
+                    menuDigitalContainer.classList.toggle("active");
+                    const isActive = menuDigitalContainer.classList.contains("active");
+                    
+                    if (overlay) {
+                        overlay.classList.toggle('active', isActive);
+                    }
+                    
+                    toggleLayoutState(isActive);
+                };
+            }
 
-    // Lắng nghe sự kiện resize để reset body nếu người dùng xoay màn hình/thay đổi kích thước
-    window.addEventListener('resize', () => {
-        const anyActive = Array.from(menuDigitalContainers).some(el => el.classList.contains("active"));
-        if (window.innerWidth > 992 || !anyActive) {
-            document.body.style.overflow = "";
-        } else if (anyActive) {
-            document.body.style.overflow = "hidden";
-        }
-    });
-}
+            const closeAll = () => {
+                menuDigitalContainer.classList.remove("active");
+                if (overlay) overlay.classList.remove("active");
+                toggleLayoutState(false);
+            };
+
+            if (closeMenuDigital) closeMenuDigital.onclick = closeAll;
+            if (overlay) overlay.onclick = closeAll;
+        });
+
+        // Lắng nghe sự kiện resize
+        window.addEventListener('resize', () => {
+            const anyActive = Array.from(menuDigitalContainers).some(el => el.classList.contains("active"));
+            toggleLayoutState(anyActive);
+        });
+    }
 
     // xử lý sự kiện play audio
     function handleAudio() {
@@ -285,41 +336,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    // xử lý sự kiện click add active cho pagodaPrimaryContainer
+    function handlePagodaPrimary() {
+        const controlBtn = document.querySelector('.js__controlPagoda');
+        const container = document.querySelector('.js__pagodaContainer');
+        
+        // Kiểm tra nếu không tìm thấy element thì thoát hàm để tránh lỗi
+        if (!controlBtn || !container) return;
+
+        const iconWrapper = controlBtn.querySelector('.control-icon');
+        const textLabel = controlBtn.querySelector('.control-text');
+
+        // Lưu trữ mã SVG vào biến để code trông sạch sẽ hơn
+        const listIcon = `<svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 80C0 71.16 7.164 64 16 64H432C440.8 64 448 71.16 448 80C448 88.84 440.8 96 432 96H16C7.164 96 0 88.84 0 80zM0 240C0 231.2 7.164 224 16 224H432C440.8 224 448 240 448 240C448 248.8 440.8 256 432 256H16C7.164 256 0 248.8 0 240zM432 416H16C7.164 416 0 408.8 0 400C0 391.2 7.164 384 16 384H432C440.8 384 448 391.2 448 400C448 408.8 432 416 432 416z"></path></svg>`;
+        const mapIcon = `<svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M264 112C264 98.75 274.7 88 288 88C301.3 88 312 98.75 312 112C312 125.3 301.3 136 288 136C274.7 136 264 125.3 264 112zM273.2 311.1C241.1 271.9 168 174.6 168 120C168 53.73 221.7 0 288 0C354.3 0 408 53.73 408 120C408 174.6 334.9 271.9 302.8 311.1C295.1 321.6 280.9 321.6 273.2 311.1V311.1zM366.6 154.1C373.3 139 376 127.4 376 120C376 71.4 336.6 32 288 32C239.4 32 200 71.4 200 120C200 127.4 202.7 139 209.4 154.1C215.9 170.4 225.1 187.4 235.8 204.7C252.9 232.5 272.7 259.4 288 279.1C303.3 259.4 323.1 232.5 340.2 204.7C350.9 187.4 360.1 170.4 366.6 154.1V154.1zM405.9 222.9C405.1 223.2 404.3 223.4 403.4 223.6C411.6 209.5 419.1 194.9 425.2 180.7L543.1 133.5C558.9 127.2 576 138.8 576 155.8V426.6C576 436.4 570 445.2 560.9 448.9L405.9 510.9C402.6 512.2 399 512.4 395.6 511.4L176.9 448.9L32.91 506.5C17.15 512.8 0 501.2 0 484.2V213.4C0 203.6 5.975 194.8 15.09 191.1L138.3 141.9C140.4 152.3 143.6 162.7 147.5 172.6L32 218.8V472.4L160 421.2V303.1C160 295.2 167.2 287.1 176 287.1C184.8 287.1 192 295.2 192 303.1V419.9L384 474.8V303.1C384 295.2 391.2 287.1 400 287.1C408.8 287.1 416 295.2 416 303.1V472.4L544 421.2V167.6L405.9 222.9z"></path></svg>`;
+
+        controlBtn.addEventListener('click', function() {
+            // Toggle class active
+            container.classList.toggle('active');
+
+            // Cập nhật giao diện dựa trên trạng thái class active
+            if (container.classList.contains('active')) {
+                iconWrapper.innerHTML = mapIcon;
+                textLabel.textContent = "Bản đồ";
+            } else {
+                iconWrapper.innerHTML = listIcon;
+                textLabel.textContent = "Danh sách";
+            }
+        });
+    }
+
 
     // xử lý lấy nội dung khi chuyển slide
    function getContentPrimary(splide, container) {
-    // 1. Xác định Slide đang hiển thị chính giữa (Active)
-    const activeIndex = splide.index;
-    const activeSlide = splide.Components.Slides.getAt(activeIndex).slide;
+        // 1. Xác định Slide đang hiển thị chính giữa (Active)
+        const activeIndex = splide.index;
+        const activeSlide = splide.Components.Slides.getAt(activeIndex).slide;
 
-    if (activeSlide) {
-        // --- PHẦN GET: Lấy dữ liệu từ slide hiện tại ---
-        const title = activeSlide.querySelector('.js__getTitle')?.innerText;
-        const desc = activeSlide.querySelector('.js__getDecription')?.innerHTML; // Lấy cả thẻ p nếu có
-        const imgBtn = activeSlide.querySelector('.article-img img')?.getAttribute('src');
+        if (activeSlide) {
+            // --- PHẦN GET: Lấy dữ liệu từ slide hiện tại ---
+            const title = activeSlide.querySelector('.js__getTitle')?.innerText;
+            const desc = activeSlide.querySelector('.js__getDecription')?.innerHTML; // Lấy cả thẻ p nếu có
+            const imgBtn = activeSlide.querySelector('.article-img img')?.getAttribute('src');
 
-        // Tìm container cha lớn nhất để set dữ liệu chính xác
-        const mainParent = container.closest('.js__getContentPrimary');
+            // Tìm container cha lớn nhất để set dữ liệu chính xác
+            const mainParent = container.closest('.js__getContentPrimary');
 
-        if (mainParent) {
-            // --- PHẦN SET: Đổ dữ liệu ra vùng hiển thị bên ngoài ---
-            
-            // Set Tiêu đề
-            const setTitle = mainParent.querySelector('.js__setTitle a') || mainParent.querySelector('.js__setTitle');
-            if (setTitle) setTitle.innerText = title;
+            if (mainParent) {
+                // --- PHẦN SET: Đổ dữ liệu ra vùng hiển thị bên ngoài ---
+                
+                // Set Tiêu đề
+                const setTitle = mainParent.querySelector('.js__setTitle a') || mainParent.querySelector('.js__setTitle');
+                if (setTitle) setTitle.innerText = title;
 
-            // Set Mô tả
-            const setDesc = mainParent.querySelector('.js__setDecription');
-            if (setDesc) setDesc.innerHTML = desc;
+                // Set Mô tả
+                const setDesc = mainParent.querySelector('.js__setDecription');
+                if (setDesc) setDesc.innerHTML = desc;
 
-            // Set Background (Ảnh nền phía sau)
-            const setBg = mainParent.querySelector('.js__setBackground img');
-            if (setBg && imgBtn) {
-                setBg.setAttribute('src', imgBtn);
+                // Set Background (Ảnh nền phía sau)
+                const setBg = mainParent.querySelector('.js__setBackground img');
+                if (setBg && imgBtn) {
+                    setBg.setAttribute('src', imgBtn);
+                }
             }
         }
     }
-}
     // Khởi tạo slider với một item
     function initSliderOneItems() {
         const oneSlides = document.querySelectorAll(".js__oneSlidesContainer");
@@ -1054,7 +1135,9 @@ document.addEventListener("DOMContentLoaded", function () {
         slideVerticalShortVideo();
         handleActiveElement();
         handleShowHiddenDigitalLibrary();
+        handleCollapse();
         handleAudio();
+        handlePagodaPrimary();
         // slide
         initSliderFreeItems();
         initSliderOneItems();

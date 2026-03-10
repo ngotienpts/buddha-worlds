@@ -120,6 +120,11 @@ p {
     max-width: 450px;
     margin: 0 auto;
 }
+.w-880 {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+}
 .w-1080 {
     width: 100%;
     max-width: 1080px;
@@ -511,6 +516,9 @@ p {
 .text-gray-323 {
     color: #32383e;
 }
+.text-gray-43 {
+    color: #434343;
+}
 .text-gray-55 {
     color: #555E68;
 }
@@ -605,6 +613,9 @@ p {
 .px-2 {
     padding-left: 2px;
     padding-right: 2px;
+}
+.p-2 {
+    padding: 2px;
 }
 /*=================================================================*/
 .pt-4 {
@@ -1652,4 +1663,7 @@ p {
 }
 .border-b-f0 {
     border-bottom: 1px solid #f0f0f0;
+}
+.border-f0 {
+    border: 1px solid #f0f0f0;
 }

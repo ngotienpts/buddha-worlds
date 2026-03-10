@@ -247,6 +247,10 @@
     .p-md-20 {
         padding: 20px;
     }
+    .py-md-20 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
     /*-------------------------------------------------------------------------*/
     .py-md-40 {
         padding-top: 40px;
@@ -420,7 +424,7 @@
             margin-left: 0;
             margin-top: 20px;
             border-left: none;
-
+            
             .article-thumb {
                 padding: 0;
             }
@@ -439,7 +443,135 @@
             }
         }
     }
+    // --------------------------------------------------------------------filter
+    .digital-library-filter-primary {
+        &.active {
+            .digital-library-filter-primary__left {
+                display: block;
+            }
+            .digital-library-filter-primary__icon-filter-show {
+                display: none;
+            }
+        }
+        &__icon-filter-show {
+            display: flex;
+        }
+        &__left {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
 
+            .overlay {
+                display: block;
+            }
+            .left-inner {
+                max-height: 80vh;
+                width: 100%;
+                position: absolute;
+                overflow: hidden;
+                top: auto;
+                bottom: 0;
+                z-index: 100;
+                padding-bottom: 30px;
+            }
+            .left-content {
+                max-height: 70vh;
+                overflow: auto;
+                padding-bottom: 10px;
+            }
+        }
+        &__right {
+            .right-top {
+                 &__action {
+                    &-text {
+                        display: inline-flex;
+                    }
+                    &.active {
+                        .right-top__list {
+                            display: block;
+                        }
+                    }
+                }
+                &__list {
+                    display: none;
+                    background-color: #fff;
+                    padding: 10px; 
+                    border-radius: 8px;
+                    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.1);
+                    margin-top: 10px;
+                    position: absolute;
+                    z-index: 10;
+                }
+                &__item {
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    border-radius: 0;
+                    padding: 10px;
+
+                    &.active {
+                        border-color: #eee;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+    // --------------------------------------------------------------------dictionary
+    .dictionary-primary {
+        &__search {
+            .search-submit {
+                padding: 6px 24px;
+            }
+        }
+
+
+        &__recent {
+            .list-close {
+                display: block;
+            }
+        }
+    }
+    // --------------------------------------------------------------------pagoda
+    .pagoda-primary {
+        &__top {
+            .select-country {
+                margin-top: 12px;
+                width: 100%;
+
+                &__item {
+                    margin-right: 8px;
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &__control {
+            display: flex;
+        }
+        &__right {
+            display: none;
+            margin-left: 0;
+            padding: 7px;
+
+            .right-bot {
+                max-height: calc(100vh - 280px);
+            }
+        }
+
+        &.active {
+            .pagoda-primary__left {
+                display: none;
+            }
+            .pagoda-primary__right {
+                display: block;
+            }
+        }
+    }
     // --------------------------------------------------------------------detail
     // --------------------------------------------------------------------digital library
     .digital-library-primary {

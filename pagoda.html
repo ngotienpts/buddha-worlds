@@ -48,6 +48,7 @@
         <link rel="stylesheet" href="./lib/swiper/swiper-bundle.min.css" />
         <link rel="stylesheet" href="./lib/splide/splide.min.css">
         <link rel="stylesheet" href="./lib/fancybox/jquery.fancybox.min.css" />
+        <link rel="stylesheet" href="./lib/leaflet/leaflet.css" />
         <link rel="stylesheet" href="./css/style.css" />
         <script src="./lib/jquery/jquery-3.7.1.min.js"></script>
     </head>
@@ -60,7 +61,7 @@
         >
             <!-- pc -->
             <div class="d-3xl-block d-xl-none">
-                <div class="header-desk header-desk-news relative z-20">
+                <div class="header-desk relative z-20">
                     <!-- top -->
                     <div class="header-top w-wrapper bg-red-741">
                         <div
@@ -1598,653 +1599,465 @@
         <!-- end header -->
         <!-- main -->
         <main id="main" class="main">
-            <!-- pc -->
-            <div class="d-3xl-block d-md-none">
-                <!-- primary -->
-                <section class="news-children-primary relative z-20 over-hidden w-wrapper bg-white">
-                    <div class="news-children-primary__container w-1280 w-md-700 relative py-24">
-                        <div class="news-children-primary__content block-secondary js__stickyContainer">
+            <!-- primary -->
+            <section class="pagoda-primary relative z-20 over-hidden bg-white js__pagodaContainer">
+                <div class="pagoda-primary__container w-1920 relative z-10">
+                    <div class="pagoda-primary__content">
+                        <!-- top -->
+                        <div class="pagoda-primary__top d-3xl-flex items-center d-md-block gap-24 border-b-e0">
+                            <div class="region-list d-3xl-flex items-center nowrap scroll-hidden">
+                                <button type="button" class="region-item active">Châu Á</button>
+                                <button type="button" class="region-item">Châu Âu</button>
+                                <button type="button" class="region-item">Châu Mỹ</button>
+                                <button type="button" class="region-item">Châu Phi</button>
+                                <button type="button" class="region-item">Châu Úc</button>
+                            </div>
+                            <div class="select-country d-3xl-flex items-center">
+                                <div class="select-country__item country flex-1">
+                                    <select name="country" id="country">
+                                        <option value="0">Chọn quốc gia</option>
+                                        <option value="1">Việt Nam</option>
+                                        <option value="2">Thái Lan</option>
+                                        <option value="3">Trung Quốc</option>
+                                        <option value="4">Myanmar</option>
+                                        <option value="5">Đài Loan</option>
+                                        <option value="6">Campuchia</option>
+                                        <option value="7">Lào</option>
+                                        <option value="8">Nhật Bản</option>
+                                        <option value="9">Ấn Độ</option>
+                                        <option value="10">Indonesia</option>
+                                        <option value="11">Philippines</option>
+                                        <option value="12">Bhutan</option>
+                                        <option value="13">Hàn Quốc</option>
+                                        <option value="14">Malaysia</option>
+                                        <option value="15">Timor-Leste</option>
+                                    </select>
+                                </div>
+                                <div class="select-country__item provinces flex-1">
+                                    <select name="provinces" id="provinces">
+                                        <option value="0">Chọn Tỉnh/Tp</option>
+                                        <option value="1">Hà Nội</option>
+                                        <option value="2">Cao Bằng</option>
+                                        <option value="3">Tuyên Quang</option>
+                                        <option value="4">Điện Biên</option>
+                                        <option value="5">Lai Châu</option>
+                                        <option value="6">Sơn La</option>
+                                        <option value="7">Lào Cai</option>
+                                        <option value="8">Thái Nguyên</option>
+                                        <option value="9">Lạng Sơn</option>
+                                        <option value="10">Quảng Ninh</option>
+                                        <option value="11">Bắc Ninh</option>
+                                        <option value="12">Phú Thọ</option>
+                                        <option value="13">Hải Phòng</option>
+                                        <option value="14">Hưng Yên</option>
+                                        <option value="15">Ninh Bình</option>
+                                        <option value="16">Thanh Hóa</option>
+                                        <option value="17">Nghệ An</option>
+                                        <option value="18">Hà Tĩnh</option>
+                                        <option value="19">Quảng Trị</option>
+                                        <option value="20">Huế</option>
+                                        <option value="21">Đà Nẵng</option>
+                                        <option value="22">Quảng Ngãi</option>
+                                        <option value="23">Gia Lai</option>
+                                        <option value="24">Khánh Hòa</option>
+                                        <option value="25">Đắk Lắk</option>
+                                        <option value="26">Lâm Đồng</option>
+                                        <option value="27">Đồng Nai</option>
+                                        <option value="28">Hồ Chí Minh</option>
+                                        <option value="29">Tây Ninh</option>
+                                        <option value="30">Đồng Tháp</option>
+                                        <option value="31">Vĩnh Long</option>
+                                        <option value="32">Cần Thơ</option>
+                                        <option value="33">Cà Mau</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="reset-select flex-0">Đặt lại</button>
+                            </div>
+                        </div>
+                        <!-- end top -->
+                        
+                        <!-- bot -->
+                        <div class="pagoda-primary__bot d-3xl-flex d-md-block p-8">
                             <!-- left -->
-                            <div class="news-children-primary__left block-secondary__left js__stickyLeft border-r-ee border-md-r-0">
-                                <!-- bredcrumb primary-->
-                                <div class="breadcrumb-primary border-b-636 mb-20 pb-20">
-                                    <div class="breadcrumb-primary__container">
-                                        <!-- heading -->
-                                        <h1 class="breadcrumb-primary__heaading fs-24 text-gray-1f fw-600 text-uppercase">
-                                            <span>Phật đản</span>
-                                        </h1>
-                                        <!-- end heading -->
-                                        <!-- list -->
-                                        <ul class="breadcrumb-primary__list mt-16 scroll-hidden">
-                                            <li class="breadcrumb-primary__item">
-                                                <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                            </li>
-                                            <li class="breadcrumb-primary__item">
-                                                <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                            </li>
-                                            <li class="breadcrumb-primary__item">
-                                                <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                            </li>
-                                            <li class="breadcrumb-primary__item">
-                                                <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                            </li>
-                                            <li class="breadcrumb-primary__item">
-                                                <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                            </li>
-                                        </ul>
-                                        <!-- end list -->
-                                    </div>
-                                </div>
-                                <!-- end bredcrumb primary-->
-                                <!-- block seven -->
-                                <div class="block-seven mt-20">
-                                    <div class="block-seven__content">
-                                        <!-- article list -->
-                                        <div class="article-list last-article">
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex d-md-block py-20 border-b-636">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
-                                                    <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-16 flex-1 ml-md-0">
-                                                    <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h1>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
-                                                        <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex d-md-block py-20 border-b-636">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
-                                                    <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-16 flex-1 ml-md-0">
-                                                    <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h1>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
-                                                        <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex d-md-block py-20 border-b-636">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
-                                                    <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-16 flex-1 ml-md-0">
-                                                    <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h1>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
-                                                        <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex d-md-block py-20 border-b-636">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
-                                                    <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-16 flex-1 ml-md-0">
-                                                    <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h1>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
-                                                        <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex d-md-block py-20 border-b-636">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-31 w-md-full">
-                                                    <a href="#" class="ratio-16x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-16 flex-1 ml-md-0">
-                                                    <h1 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h1>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans mt-8">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mt-8">
-                                                        <span class="">&nbsp;•&nbsp;28/02/2026, 11:09</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                            <!-- end article -->
-                                        </div>
-                                        <!-- end article list -->
-
-                                        <!-- pagination -->
-                                        <div class="pagination d-3xl-flex items-center justify-center fs-16 mt-32">
-                                            <div class="pagination-item prev">
-                                                <a href="#" class="pagination-link">
-                                                    <img src="./images/svg/arrow-prev-gray.svg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="pagination-item active">
-                                                <a href="#" class="pagination-link">01</a>
-                                            </div>
-                                            <div class="pagination-item">
-                                                <a href="#" class="pagination-link">02</a>
-                                            </div>
-                                            <div class="pagination-item">
-                                                <a href="#" class="pagination-link">03</a>
-                                            </div>
-                                            <div class="pagination-item">
-                                                <a href="#" class="pagination-link">04</a>
-                                            </div>
-                                            <div class="pagination-item next">
-                                                <a href="#" class="pagination-link">
-                                                    <img src="./images/svg/arrow-next-gray.svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end pagination -->
-
-                                        <!-- see more -->
-                                        <div class="see-more mt-32 d-3xl-flex items-center justify-center">
-                                            <a href="#" class="see-more__btn font-noto-sans">Xem thêm</a>
-                                        </div>
-                                        <!-- end see more -->
-                                    </div>
-                                </div>
-                                <!-- end block seven -->
+                            <div class="pagoda-primary__left flex-1">
+                                <div id="map"></div>
                             </div>
                             <!-- end left -->
                             <!-- right -->
-                            <div class="news-children-primary__right block-secondary__right js__stickyRight">
-                                <!-- block five -->
-                                <div class="block-five">
-                                    <!-- heading -->
-                                    <h2 class="block-five__heading fs-20 text-gray-171 text-uppercase fw-700 mb-10">
-                                        <span>Tin đọc nhiều nhất</span>
-                                    </h2>
-                                    <!-- end heading -->
+                            <div class="pagoda-primary__right flex-0 w-30 w-md-full ml-20 p-10">
+                                <!-- top -->
+                                <div class="right-top d-3xl-flex items-center justify-between gap-8">
+                                    <h1 class="right-top__title fs-16 font-noto-sans text-gray-323 fw-600"><span>278 ngôi chùa trong khu vực</span></h1>
 
-                                    <!-- content -->
-                                    <div class="block-five__content mt-20">
-                                        <!-- large -->
-                                        <div class="article-large">
-                                            <div class="article">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8">
-                                                    <a href="#" class="ratio-15x9 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content mt-12">
-                                                    <h3 class="article-title fs-14 fw-600 font-noto-sans text-gray-171 flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h3>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
+                                    <div class="right-top__btn d-3xl-flex items-center">
+                                        <div class="btn-icon icon-20 flex-0 mr-8">
+                                            <img src="./images/svg/fly-red.svg" alt="">
                                         </div>
-                                        <!-- end large -->
-
-                                        <!-- smalls -->
-                                        <div class="article-smalls mt-16">
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
-                                                <!-- content -->
-                                                <div class="article-content flex-1">
-                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h3>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                                <!-- img -->
-                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
-                                                <!-- content -->
-                                                <div class="article-content flex-1">
-                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h3>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                                <!-- img -->
-                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                            </div>
-                                            <!-- end article -->
-                                            <!-- article -->
-                                            <div class="article d-3xl-flex items-center py-16 border-t-636">
-                                                <!-- content -->
-                                                <div class="article-content flex-1">
-                                                    <h3 class="article-title fs-14 fw-600 text-gray-171 font-noto-sans flex-1">
-                                                        <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                                    </h3>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                                <!-- img -->
-                                                <div class="article-img over-hidden flex-0 ml-8 w-33 border-8">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                            </div>
-                                            <!-- end article -->
-                                        </div>
-                                        <!-- end smalls -->
+                                        <span class="btn-text fs-14 font-noto-sans text-red-a60 fw-600">Đóng góp thông tin</span>
                                     </div>
-                                    <!-- end content -->
                                 </div>
-                                <!-- end block five -->
+                                <!-- end top -->
+                                <!-- bot -->
+                                <div class="right-bot mt-20">
+                                    
+                                    <!-- article list -->
+                                    <div class="article-list d-3xl-grid col-2 gap-16">
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        <!-- article -->
+                                        <div class="article p-2">
+                                            <div class="article-inner shadow over-hidden border-8">
+                                                <!-- img -->
+                                                <div class="article-img">
+                                                    <div class="ratio-21x8 over-hidden scale-107">
+                                                        <img src="./images/2.jpg" alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <!-- end img -->
+                                                <!-- content -->
+                                                <div class="article-content p-16 bg-white">
+                                                    <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                                        <span class="fix-text2">Joraku-ji (常楽寺)</span>
+                                                    </h3>
+                                                    <div class="article-info mt-4 fs-12 text-gray-171 font-noto-sans">
+                                                        <span class="">Enmei-606 Kokufuchō, Tokushima, 779-3128, Nhật Bản</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- end content -->
+                                            </div>
+                                        </div>
+                                        <!-- end article -->
+                                        
+                                    </div>
+                                    <!-- end article list -->
+                                    <!-- pagination -->
+                                    <div class="see-more__secondary mt-32 d-3xl-flex items-center justify-center">
+                                        <a href="#" class="secondary-link fs-14 font-noto-sans fw-500 d-3xl-flex items-center justify-center">
+                                            <span class="secondary-text">Xem thêm kết quả</span>
+                                            <div class="secondary-icon icon-20 flex-0 ml-4">
+                                                <img src="./images/svg/arrow-down-gray-2.svg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- end pagination -->
+
+                                </div>
+                                <!-- end bot -->
                             </div>
                             <!-- end right -->
                         </div>
-                    </div>
-                </section>
-                <!-- end secondary -->
-                
-            </div>
-            <!-- end pc -->
+                        <!-- end bot -->
 
-            <!-- mb -->
-            <div class="d-3xl-none d-md-block">
-                <!-- primary -->
-                <section class="news-primary-mb relative z-20 over-hidden w-wrapper bg-white">
-                    <div class="news-primary-mb__container w-1280 w-md-500 relative over-hidden py-20">
-                        <div class="news-primary-mb__content">
-                            <!-- bredcrumb primary-->
-                            <div class="breadcrumb-primary border-b-636 mb-20 pb-20">
-                                <div class="breadcrumb-primary__container">
-                                    <!-- heading -->
-                                    <h1 class="breadcrumb-primary__heaading fs-24 text-gray-1f fw-600 text-uppercase">
-                                        <span>Phật đản</span>
-                                    </h1>
-                                    <!-- end heading -->
-                                    <!-- list -->
-                                    <ul class="breadcrumb-primary__list mt-16 scroll-hidden">
-                                        <li class="breadcrumb-primary__item">
-                                            <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                        </li>
-                                        <li class="breadcrumb-primary__item">
-                                            <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                        </li>
-                                        <li class="breadcrumb-primary__item">
-                                            <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                        </li>
-                                        <li class="breadcrumb-primary__item">
-                                            <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                        </li>
-                                        <li class="breadcrumb-primary__item">
-                                            <a href="#" class="breadcrumb-primary__link fs-14 text-gray-323 fw-600 font-noto-sans py-6">Pháp sự khẩn</a>
-                                        </li>
-                                    </ul>
-                                    <!-- end list -->
-                                </div>
+                        <div class="pagoda-primary__control js__controlPagoda">
+                            <div class="control-icon flex-0 mr-8 d-3xl-flex items-center justify-center">
+                                <svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 80C0 71.16 7.164 64 16 64H432C440.8 64 448 71.16 448 80C448 88.84 440.8 96 432 96H16C7.164 96 0 88.84 0 80zM0 240C0 231.2 7.164 224 16 224H432C440.8 224 448 231.2 448 240C448 248.8 440.8 256 432 256H16C7.164 256 0 248.8 0 240zM432 416H16C7.164 416 0 408.8 0 400C0 391.2 7.164 384 16 384H432C440.8 384 448 391.2 448 400C448 408.8 440.8 416 432 416z"></path></svg>
                             </div>
-                            <!-- end bredcrumb primary-->
-
-                            <!-- block six -->
-                            <div class="block-six">
-                                <!-- content -->
-                                <div class="block-six__content mt-20">
-                                    <!-- article list -->
-                                    <div class="article-list last-article">
-                                        <!-- article -->
-                                        <div class="article py-20 border-b-636">
-                                            <!-- title -->
-                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                            </h3>
-                                            <!-- end title -->
-                                            <div class="article-inner d-3xl-flex mt-16">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-37">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-12 flex-1">
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
-                                                        <span class="">28/02/2026, 11:09</span>
-                                                    </div>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                        </div>
-                                        <!-- end article -->
-                                        <!-- article -->
-                                        <div class="article py-20 border-b-636">
-                                            <!-- title -->
-                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                            </h3>
-                                            <!-- end title -->
-                                            <div class="article-inner d-3xl-flex mt-16">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-37">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-12 flex-1">
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
-                                                        <span class="">28/02/2026, 11:09</span>
-                                                    </div>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                        </div>
-                                        <!-- end article -->
-                                        <!-- article -->
-                                        <div class="article py-20 border-b-636">
-                                            <!-- title -->
-                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                            </h3>
-                                            <!-- end title -->
-                                            <div class="article-inner d-3xl-flex mt-16">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-37">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-12 flex-1">
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
-                                                        <span class="">28/02/2026, 11:09</span>
-                                                    </div>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                        </div>
-                                        <!-- end article -->
-                                        <!-- article -->
-                                        <div class="article py-20 border-b-636">
-                                            <!-- title -->
-                                            <h3 class="article-title fs-20 fw-600 text-gray-171 flex-1">
-                                                <a href="#" class="fix-text3">Phạm Thoại kêu gọi từ thiện - Bài học nhớ đời: Phân tích dưới góc nhìn Phật Giáo</a>
-                                            </h3>
-                                            <!-- end title -->
-                                            <div class="article-inner d-3xl-flex mt-16">
-                                                <!-- img -->
-                                                <div class="article-img over-hidden border-8 flex-0 w-37">
-                                                    <a href="#" class="ratio-4x6 over-hidden border-8 scale-107">
-                                                        <img src="./images/2.jpg" alt="" class="">
-                                                    </a>
-                                                </div>
-                                                <!-- end img -->
-                                                <!-- content -->
-                                                <div class="article-content ml-12 flex-1">
-                                                    <div class="article-time fs-14 text-gray-9e font-noto-sans mb-8">
-                                                        <span class="">28/02/2026, 11:09</span>
-                                                    </div>
-                                                    <div class="article-des fs-14 text-gray-55 font-noto-sans fix-text3">
-                                                        <p>Luật Tứ Phần (Tập 5 – Hết) là phần cuối trong bộ Luật Tứ Phần do Hòa thượng Thích Trí Tịnh dịch, trình bày chi tiết giới luật của Tỳ-kheo, Tỳ-kheo-ni theo truyền thống Phật giáo, giúp hành giả tu học và giữ gìn giới hạnh thanh tịnh.</p>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- end content -->
-                                            </div>
-                                        </div>
-                                        <!-- end article -->
-                                    </div>
-                                    <!-- end article list -->
-                                </div>
-                                <!-- end content -->
-
-                                <!-- pagination -->
-                                <div class="pagination d-3xl-flex items-center justify-center fs-16 mt-32">
-                                    <div class="pagination-item prev">
-                                        <a href="#" class="pagination-link">
-                                            <img src="./images/svg/arrow-prev-gray.svg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="pagination-item active">
-                                        <a href="#" class="pagination-link">01</a>
-                                    </div>
-                                    <div class="pagination-item">
-                                        <a href="#" class="pagination-link">02</a>
-                                    </div>
-                                    <div class="pagination-item">
-                                        <a href="#" class="pagination-link">03</a>
-                                    </div>
-                                    <div class="pagination-item">
-                                        <a href="#" class="pagination-link">04</a>
-                                    </div>
-                                    <div class="pagination-item next">
-                                        <a href="#" class="pagination-link">
-                                            <img src="./images/svg/arrow-next-gray.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- end pagination -->
-
-                                <!-- see more -->
-                                <div class="see-more mt-32 d-3xl-flex items-center justify-center">
-                                    <a href="#" class="see-more__btn font-noto-sans">Xem thêm</a>
-                                </div>
-                                <!-- end see more -->
-                            </div>
-                            <!-- end block six -->
+                            <span class="control-text fs-14 text-white font-noto-sans fw-600">Danh sách</span>
                         </div>
                     </div>
-                </section>
-                <!-- end primary -->
-               
-            </div>
-            <!-- end mb -->
+                </div>
+            </section>
+            <!-- end primary -->
 
         </main>
         <!-- end main -->
-        <!-- footer -->
-        <footer id="footer" class="footer bg-red-fff">
-            <!-- back top -->
-            <div id="back-top">
-                <img src="./images/svg/arrow-top-w.svg" alt="" />
-            </div>
-            <!-- end back top -->
-
-            <!-- footer primary -->
-            <section class="footer-primary relative z-10 over-hidden w-wrapper">
-                <div class="footer-primary__container w-1280 relative over-hidden py-48">
-                    <!-- top -->
-                    <div class="footer-primary__top d-3xl-flex d-md-block gap-24">
-                        <!-- left -->
-                        <div class="footer-primary__left flex-0 w-20 w-md-full d-md-flex justify-between">
-                            <div>
-                                <!-- logo -->
-                                <div class="footer-logo">
-                                    <a href="#" class="footer-logo__link">
-                                        <img src="./images/svg/logo-footer-home.svg" alt="" class="footer-logo__icon footer-logo__icon-home">
-                                        <img src="./images/svg/logo-footer.svg" alt="" class="footer-logo__icon footer-logo__icon-default">
-                                    </a>
-                                </div>
-                                <!-- end logo -->
-                                <!-- text 1 -->
-                                <div class="test-version fs-12 text-red-74 font-noto-sans fw-600 home-color">
-                                    <span>Phiên bản thử nghiệm</span>
-                                </div>
-                                <!-- end text 1 -->
-                            </div>
-
-                            <!-- social -->
-                            <div class="footer-social d-3xl-flex items-center">
-                                <a href="#" class="footer-social__link">
-                                    <svg focusable="false" aria-hidden="true" viewBox="0 0 32 33" width="32" height="33" fill="none" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-sizeMd buddhaworlds-light-4z70un"><g clip-path="url(#clip0_1711_2146)"><path d="M32 16.1572C32 7.31973 24.8375 0.157227 16 0.157227C7.1625 0.157227 0 7.31973 0 16.1572C0 24.9947 7.1625 32.1572 16 32.1572C16.0938 32.1572 16.1875 32.1572 16.2812 32.151V19.701H12.8438V15.6947H16.2812V12.7447C16.2812 9.32598 18.3688 7.46348 21.4188 7.46348C22.8813 7.46348 24.1375 7.56973 24.5 7.61973V11.1947H22.4C20.7437 11.1947 20.4188 11.9822 20.4188 13.1385V15.6885H24.3875L23.8687 19.6947H20.4188V31.5385C27.1063 29.6197 32 23.4635 32 16.1572Z" fill="currentColor"></path></g><defs><clipPath id="clip0_1711_2146"><rect width="32" height="32" fill="white" transform="translate(0 0.157227)"></rect></clipPath></defs></svg>
-                                </a>
-                                <a href="#" class="footer-social__link">
-                                    <svg focusable="false" aria-hidden="true" viewBox="0 0 32 33" width="32" height="33" fill="none" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-sizeMd buddhaworlds-light-4z70un"><g clip-path="url(#clip0_1711_2152)"><path d="M14.0068 19.1548L19.2114 16.1572L14.0068 13.1597V19.1548Z" fill="currentColor"></path><path d="M16 0.157227C7.16479 0.157227 0 7.32202 0 16.1572C0 24.9924 7.16479 32.1572 16 32.1572C24.8352 32.1572 32 24.9924 32 16.1572C32 7.32202 24.8352 0.157227 16 0.157227ZM25.9976 16.1736C25.9976 16.1736 25.9976 19.4185 25.5859 20.9832C25.3552 21.8396 24.6799 22.5149 23.8235 22.7454C22.2588 23.1572 16 23.1572 16 23.1572C16 23.1572 9.75757 23.1572 8.17651 22.729C7.32007 22.4985 6.64478 21.823 6.41406 20.9666C6.0022 19.4185 6.0022 16.1572 6.0022 16.1572C6.0022 16.1572 6.0022 12.9126 6.41406 11.3479C6.64453 10.4915 7.33643 9.79956 8.17651 9.56909C9.74121 9.15723 16 9.15723 16 9.15723C16 9.15723 22.2588 9.15723 23.8235 9.58545C24.6799 9.81592 25.3552 10.4915 25.5859 11.3479C26.0142 12.9126 25.9976 16.1736 25.9976 16.1736Z" fill="currentColor"></path></g><defs><clipPath id="clip0_1711_2152"><rect width="32" height="32" fill="white" transform="translate(0 0.157227)"></rect></clipPath></defs></svg>
-                                </a>
-                                <a href="#" class="footer-social__link">
-                                    <svg focusable="false" aria-hidden="true" viewBox="0 0 32 33" width="32" height="33" fill="none" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-sizeMd buddhaworlds-light-4z70un"><path d="M16 0.9375C24.8367 0.9375 32 8.10077 32 16.9375C32 25.7742 24.8367 32.9375 16 32.9375C7.16327 32.9375 1.77174e-07 25.7742 0 16.9375C0 8.10077 7.16327 0.9375 16 0.9375ZM16.1875 7.9375C16.1875 7.94037 16.1612 20.429 16.1611 20.5039C16.1611 22.0457 14.8212 23.2607 13.3037 23.2607C11.7863 23.2607 10.5568 22.0114 10.5566 20.4697C10.5566 18.9279 11.7862 17.6787 13.3037 17.6787C13.4173 17.6787 13.5263 17.6985 13.6367 17.7119V15.0176C13.5263 15.0105 13.416 15 13.3037 15C10.3312 15 7.9209 17.4487 7.9209 20.4688C7.9209 23.4888 10.3312 25.9375 13.3037 25.9375C16.2762 25.9374 18.6865 23.4888 18.6865 20.4688V13.0693C19.533 14.377 20.9878 15.2422 22.6436 15.2422C22.7906 15.2422 22.9359 15.2332 23.0791 15.2197V12.2246C20.7915 12.0579 18.9613 10.2406 18.7227 7.9375H16.1875Z" fill="currentColor"></path></svg>
-                                </a>
-                            </div>
-                            <!-- end social -->
-                        </div>
-                        <!-- end left -->
-                        <!-- right -->
-                        <div class="footer-primary__right flex-1">
-                            <!-- heading -->
-                            <div class="heading-secondary">
-                                <h2 class="heading-secondary__title fs-16 pl-32 text-gray-171 fw-600">Về chúng tôi</h2>
-                            </div>
-                            <!-- end heading -->
-
-                            <!-- list -->
-                            <div class="list-text d-3xl-grid d-md-block col-2 mt-16">
-                                <!-- item -->
-                                <div class="list-item pl-32 d-3xl-flex pb-16">
-                                    <div class="list-item__icon flex-0 mt-4 mr-16">
-                                        <svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 344C320 330.7 330.7 320 344 320H392C405.3 320 416 330.7 416 344V392C416 405.3 405.3 416 392 416H344C330.7 416 320 405.3 320 392V344zM384 384V352H352V384H384zM320 88C320 74.75 330.7 64 344 64H392C405.3 64 416 74.75 416 88V136C416 149.3 405.3 160 392 160H344C330.7 160 320 149.3 320 136V88zM352 96V128H384V96H352zM344 288C330.7 288 320 277.3 320 264V216C320 202.7 330.7 192 344 192H392C405.3 192 416 202.7 416 216V264C416 277.3 405.3 288 392 288H344zM352 224V256H384V224H352zM448 0C483.3 0 512 28.65 512 64V448C512 483.3 483.3 512 448 512H288C252.7 512 224 483.3 224 448V64C224 28.65 252.7 0 288 0H448zM448 32H288C270.3 32 256 46.33 256 64V448C256 465.7 270.3 480 288 480H448C465.7 480 480 465.7 480 448V64C480 46.33 465.7 32 448 32zM176 160H64C46.33 160 32 174.3 32 192V448C32 465.7 46.33 480 64 480H192C200.8 480 208 487.2 208 496C208 504.8 200.8 512 192 512H64C28.65 512 0 483.3 0 448V192C0 156.7 28.65 128 64 128H176C184.8 128 192 135.2 192 144C192 152.8 184.8 160 176 160zM136 320C149.3 320 160 330.7 160 344V392C160 405.3 149.3 416 136 416H88C74.75 416 64 405.3 64 392V344C64 330.7 74.75 320 88 320H136zM128 384V352H96V384H128zM136 192C149.3 192 160 202.7 160 216V264C160 277.3 149.3 288 136 288H88C74.75 288 64 277.3 64 264V216C64 202.7 74.75 192 88 192H136zM128 256V224H96V256H128z"></path></svg>
-                                    </div>
-                                    <div class="list-item__txt fs-14 text-gray-171 flex-1">
-                                        <strong>Trụ sở chính:</strong>Tầng 3, Tòa nhà Mipec Tower, số 229 Tây Sơn, Phường Kim Liên, TP Hà Nội
-                                    </div>
-                                </div>
-                                <!-- end item -->
-                                <!-- item -->
-                                <div class="list-item pl-32 d-3xl-flex pb-16">
-                                    <div class="list-item__icon flex-0 mt-4 mr-16">
-                                        <svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 96c-17.7 0-32 14.3-32 32v39.9L227.6 311.3c16.9 12.4 39.9 12.4 56.8 0L480 167.9V128c0-17.7-14.3-32-32-32H64zM32 207.6V384c0 17.7 14.3 32 32 32H448c17.7 0 32-14.3 32-32V207.6L303.3 337.1c-28.2 20.6-66.5 20.6-94.6 0L32 207.6zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"></path></svg>
-                                    </div>
-                                    <div class="list-item__txt fs-14 text-gray-171 flex-1">
-                                        <strong>Địa chỉ email: </strong>info@starworldgroup.vn
-                                    </div>
-                                </div>
-                                <!-- end item -->
-                                <!-- item -->
-                                <div class="list-item pl-32 d-3xl-flex pb-16">
-                                    <div class="list-item__icon flex-0 mt-4 mr-16">
-                                        <svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448 96h-64V48C384 21.53 362.5 0 336 0h-160C149.5 0 128 21.53 128 48V96H64C28.65 96 0 124.7 0 160v256c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V160C512 124.7 483.3 96 448 96zM160 48C160 39.17 167.2 32 176 32h160C344.8 32 352 39.17 352 48V96H160V48zM480 416c0 17.64-14.36 32-32 32H64c-17.64 0-32-14.36-32-32V288h144v64c0 8.844 7.156 16 16 16h128c8.844 0 16-7.156 16-16V288H480V416zM208 336V288h96v48H208zM480 256H32V160c0-17.64 14.36-32 32-32h384c17.64 0 32 14.36 32 32V256z"></path></svg>
-                                    </div>
-                                    <div class="list-item__txt fs-14 text-gray-171 flex-1">
-                                        <strong>Văn phòng chi nhánh: </strong>23-25 Đường số 1, Khu Kim Sơn, Phường Tân Hưng, TP Hồ Chí Minh
-                                    </div>
-                                </div>
-                                <!-- end item -->
-                                <!-- item -->
-                                <div class="list-item pl-32 d-3xl-flex pb-16">
-                                    <div class="list-item__icon flex-0 mt-4 mr-16">
-                                        <svg fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M484.6 330.6C484.6 330.6 484.6 330.6 484.6 330.6l-101.8-43.66c-18.5-7.688-40.2-2.375-52.75 13.08l-33.14 40.47C244.2 311.8 200.3 267.9 171.6 215.2l40.52-33.19c15.67-12.92 20.83-34.16 12.84-52.84L181.4 27.37C172.7 7.279 150.8-3.737 129.6 1.154L35.17 23.06C14.47 27.78 0 45.9 0 67.12C0 312.4 199.6 512 444.9 512c21.23 0 39.41-14.44 44.17-35.13l21.8-94.47C515.7 361.1 504.7 339.3 484.6 330.6zM457.9 469.7c-1.375 5.969-6.844 10.31-12.98 10.31c-227.7 0-412.9-185.2-412.9-412.9c0-6.188 4.234-11.48 10.34-12.88l94.41-21.91c1-.2344 2-.3438 2.984-.3438c5.234 0 10.11 3.094 12.25 8.031l43.58 101.7C197.9 147.2 196.4 153.5 191.8 157.3L141.3 198.7C135.6 203.4 133.8 211.4 137.1 218.1c33.38 67.81 89.11 123.5 156.9 156.9c6.641 3.313 14.73 1.531 19.44-4.219l41.39-50.5c3.703-4.563 10.16-6.063 15.5-3.844l101.6 43.56c5.906 2.563 9.156 8.969 7.719 15.22L457.9 469.7z"></path></svg>
-                                    </div>
-                                    <div class="list-item__txt fs-14 text-gray-171 flex-1">
-                                        <strong>Hotline: </strong>+84829243388
-                                    </div>
-                                </div>
-                                <!-- end item -->
-                            </div>
-                            <!-- end list -->
-                        </div>
-                        <!-- end right -->
-                    </div>
-                    <!-- end top -->
-                    <!-- bot -->
-                    <div class="footer-primary__bot mt-40 mt-md-0">
-                        <div class="list-text d-3xl-flex fs-12 items-center justify-between text-gray-55     flex-md-column py-12">
-                            <span class="item-text">Vận hành bởi <strong>Starworld Group</strong></span>
-                            <span class="item-text">@ 2025 BuddhaWorlds. Tất cả quyền được bảo lưu</span>
-                        </div>
-                    </div>
-                    <!-- end bot -->
-                </div>
-            </section>
-            <!-- end footer primary -->
-        </footer>
-        <!-- end footer -->
+        
         <script src="./lib/swiper/swiper-bundle.min.js"></script>
         <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
         <script src="./lib/splide/splide.min.js"></script>
         <script src="./lib/fancybox/jquery.fancybox.min.js"></script>
         <script src="./js/ResizeSensor.js"></script>
         <script src="./js/theia-sticky-sidebar.js"></script>
+        <script src="./lib/leaflet/leaflet.js"></script>
         <script src="./js/main.js"></script>
+        <script>
+            // face location
+            const locations = [
+                { 
+                    name: "Chùa Vĩnh Nghiêm", 
+                    lat: 10.7934, 
+                    lng: 106.6828, 
+                    type: 'temple', 
+                    desc: "Quận 3, TP.HCM",
+                    imgae: "./images/webp/0742f05f-chua-dong-cao-2-ejyjcw.webp"
+                },
+                { 
+                    name: "Chùa Bái Đính", 
+                    lat: 20.2680, lng: 105.8670, 
+                    type: 'temple', 
+                    desc: "Ninh Bình",
+                    imgae: "./images/webp/minhquang-video-2-720p-copy-750x458-l36qzj.webp"
+                },
+                { 
+                    name: "Quần đảo Trường Sa", 
+                    lat: 10.0000, 
+                    lng: 114.0000, 
+                    type: 'island', 
+                    desc: "Khánh Hòa, Việt Nam",
+                    imgae: "./images/webp/hoangsa.webp"
+                },
+                { 
+                    name: "Đảo Phú Quốc", 
+                    lat: 10.2289, 
+                    lng: 103.9572, 
+                    type: 'island', 
+                    desc: "Kiên Giang" ,
+                    imgae: "./images/webp/truongsa.webp"
+                }
+            ];
+            // khởi tạo bản đồ xác định vị trí ban đầu
+            var map = L.map('map', {
+                center: [16.0, 108.0],
+                zoom: 6,
+                zoomControl: true
+            });
+
+            // chỉnh màu map
+            // L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            //     attribution: '&copy; OpenStreetMap &copy; CARTO',
+            //     subdomains: 'abcd',
+            //     maxZoom: 19
+            // }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+                    
+            // set icon
+            const templeIcon = L.icon({
+                iconUrl: './images/temple-marker.png', 
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32], 
+                className: 'leaflet-zoom-animated leaflet-interactive'
+            });
+
+            const islandIcon = L.icon({
+                iconUrl: './images/svg/island-marker.svg',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16], 
+                popupAnchor: [0, -16],
+                className: 'leaflet-zoom-animated leaflet-interactive'
+            });
+
+
+            // 7. Gắn Marker lên bản đồ bằng vòng lặp
+            locations.forEach(loc => {
+                // Chọn icon dựa trên 'type'
+                const currentIcon = (loc.type === 'temple') ? templeIcon : islandIcon;
+
+                // Tạo marker và gắn vào bản đồ
+                L.marker([loc.lat, loc.lng], { 
+                    icon: currentIcon,
+                    alt: "Marker" 
+                })
+                .addTo(map)
+                .bindPopup(`
+                    <div class="article shadow over-hidden border-8">
+                        <!-- img -->
+                        <div class="article-img">
+                            <div class="ratio-21x9 over-hidden scale-107">
+                                <img src="${loc.imgae}" alt="" class="">
+                            </div>
+                        </div>
+                        <!-- end img -->
+                        <!-- content -->
+                        <div class="article-content p-12 bg-white">
+                            <div class="article-heading d-3xl-flex items-center">
+                                <h3 class="article-title fs-14 font-noto-sans fw-600 text-gray-323 flex-1">
+                                    <span class="fix-text2">Galden Namgey Lhatse (Tawang Monastery)</span>
+
+                                </h3>
+                                <a href="#" class="article-redirect flex-0 d-3xl-flex ml-8">
+                                    <img src="./images/webp/redirect-icon.webp" alt="">
+                                </a>
+                            </div>
+                            <div class="article-phone mt-4 fs-12 text-red-74 d-3xl-flex items-center font-noto-sans">
+                                <div class="icon-16 mr-8">
+                                    <img src="./images/svg/phone-gray.svg" alt="">
+                                </div>
+                                <span class="fw-600">+919435412860</span>
+                            </div>
+                            <div class="article-opne mt-8 fs-12 text-gray-171 d-3xl-flex items-center font-noto-sans">
+                                <div class="icon-16 mr-8">
+                                    <img src="./images/svg/clock-gray-2.svg" alt="">
+                                </div>
+                                <span class="fw-600">7:00-19:00</span>
+                            </div>
+                            
+                        </div>
+                        <!-- end content -->
+                    </div>
+                
+                `);
+            });
+        </script>
 
     </body>
 </html>
