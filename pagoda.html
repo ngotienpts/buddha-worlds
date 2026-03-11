@@ -1599,6 +1599,243 @@
         <!-- end header -->
         <!-- main -->
         <main id="main" class="main">
+            <!-- popup chi tiet chua -->
+            <div class="popup-detail-pagoda popup-container js__popupDetailPagodaContainer">
+                <div class="popup-detail-pagoda__container popup-content js__popupDetailPagodaContent js__changeTab">
+                    <!-- header -->
+                    <div class="popup-detail-pagoda__header d-3xl-flex items-center justify-between gap-16 px-20 px-md-15">
+                        <!-- back -->
+                        <div class="header-back d-3xl-flex items-center flex-0 pointer js__closePopupDetailPagoda">
+                            <div class="header-back__icon icon-18 flex-0">
+                                <img src="./images/svg/arrow-prev-gray.svg" alt="">
+                            </div>
+                            <span class="header-back__text fs-14 font-noto-sans text-gray-323 fw-600 d-3xl-inline-block d-md-none ml-4">Quay lại</span>
+                        </div>
+                        <!-- end back -->
+                        <ul class="header-tab__list d-3xl-flex items-center justify-center gap-40">
+                            <li class="header-tab__item active js__tabItem">
+                                <span class="header-tab__text py-12 fs-16 fw-600 text-gray-323 d-3xl-inline-block pointer">Giới thiệu</span>
+                            </li>
+                            <li class="header-tab__item js__tabItem">
+                                <span class="header-tab__text py-12 fs-16 fw-600 text-gray-323 d-3xl-inline-block pointer">Tin tức</span>
+                            </li>
+                            <li class="header-tab__item js__tabItem">
+                                <span class="header-tab__text py-12 fs-16 fw-600 text-gray-323 d-3xl-inline-block pointer">Sự kiện</span>
+                            </li>
+                        </ul>
+                        <!-- back -->
+                        <div class="header-share d-3xl-flex items-center flex-0 pointer">
+                            <div class="header-share__icon icon-18 flex-0">
+                                <img src="./images/svg/share-gray.svg" alt="">
+                            </div>
+                            <span class="header-share__text fs-14 font-noto-sans text-gray-323 fw-600 d-3xl-inline-block d-md-none ml-4">Chia sẻ</span>
+                        </div>
+                        <!-- end back -->
+                    </div>
+                    <!-- end header -->
+
+                    <!-- content -->
+                    <div class="popup-detail-pagoda__content py-16 px-24 p-md-15 bg-gray-fa h-full">
+                        <!-- pane -->
+                        <div class="popup-detail-pagoda__pane hidden active js__tabPane">
+                            <!-- one -->
+                            <div class="popup-detail-pagoda__one d-3xl-flex items-center justify-between d-md-block">
+                                <!-- left -->
+                                <div class="one-left">
+                                    <h1 class="one-left__title fs-20 text-gray-323 fw-600"><span>Puning Temple</span></h1>
+                                    <div class="one-left__location mt-8">
+                                        <span class="location-icon icon-16 flex-0 mr-4">
+                                            <img src="./images/svg/location-gray.svg" alt="">
+                                        </span>
+                                        <span class="location-text fs-14 text-gray-43 font-noto-sans">
+                                            <strong>Địa chỉ:</strong>
+                                            2X82+4W4, Pu Ning Lu, Shuang Qiao Qu, Cheng De Shi, He Bei Sheng, Trung Quốc, 067050
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- end left -->
+                                <!-- right -->
+                                <div class="one-right mt-md-10">
+                                    <div class="right-top__btn btn-feedback-bg-red d-3xl-inline-flex items-center js__showPopupFeedbackPagoda">
+                                        <div class="btn-icon icon-20 flex-0 mr-8">
+                                            <img src="./images/svg/fly-red.svg" alt="">
+                                        </div>
+                                        <span class="btn-text fs-14 font-noto-sans text-red-a60 fw-600">Đóng góp thông tin</span>
+                                    </div>
+                                </div>
+                                <!-- end right -->
+                            </div>
+                            <!-- end one -->
+                            <!-- two -->
+                            <div class="popup-detail-pagoda__two my-16 d-3xl-flex items-center gap-8">
+                                <div class="two-map flex-0">
+                                    <iframe src="https://www.google.com/maps?q=40.1030850,116.0912800&amp;hl=vi&amp;output=embed" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border: 0px; width: 100%; border-radius: 8px;"></iframe>
+                                </div>
+                                <div class="two-images flex-1 js__galleryImages">
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                    <a data-fancybox="gallery" class="two-img js__imgItem" href="./images/2.jpg">
+                                        <img src="./images/2.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end two -->
+                            <!-- three -->
+                            <div class="popup-detail-pagoda__three js__extendContainer">
+                                <h2 class="three-title fw-600 fs-16 text-gray-1f mb-15"><span>Giới thiệu</span></h2>
+                                <div class="three-demo fs-14 text-gray-1f font-noto-sans">
+                                    <p>1. Giới thiệu nhanhGiữa những ngọn đồi phủ rừng thông xanh ngát gần Hoàng cung Mùa hè ở Chengde, Puning Temple (普宁寺) – còn gọi là “Chùa Đại Phật Nhập thế” – vươn mình với mái ngói Tam Thái cao vút, nơi phản chiếu khát khao hòa bình của Càn Long hoàng đế giữa thế kỷ 18. Không chỉ là thắng tích UNESCO, Puning còn là nơi quy tụ tinh hoa văn hóa Trung – Tạng, là viên ngọc về kiến trúc và tâm linh mà bạn không thể bỏ lỡ 2. Lịch sử chùaKhởi dựng năm 1755 dưới thời Càn Long, để tôn vinh chiến thắng trư...</p>
+                                </div>
+                                <div class="detail-content">
+                                    <div id="explus-editor">
+                                        <h2>1. Giới thiệu nhanh</h2><p>Giữa những ngọn đồi phủ rừng thông xanh ngát gần <strong>Hoàng cung Mùa hè ở Chengde</strong>, <strong>Puning Temple (普宁寺)</strong> – còn gọi là “Chùa Đại Phật Nhập thế” – vươn mình với mái ngói Tam Thái cao vút, nơi phản chiếu khát khao hòa bình của <strong>Càn Long hoàng đế</strong> giữa thế kỷ 18. Không chỉ là thắng tích UNESCO, Puning còn là nơi quy tụ tinh hoa văn hóa Trung – Tạng, là viên ngọc về kiến trúc và tâm linh mà bạn không thể bỏ lỡ&nbsp;</p><h2>2. Lịch sử chùa</h2><ul><li><strong>Khởi dựng năm 1755</strong> dưới thời Càn Long, để tôn vinh chiến thắng trước người Dzungar và củng cố hòa bình dân tộc&nbsp;</li><li>Càn Long phái quân đánh Dzungar ở Tân Cương, rồi khắc bài minh «Puning Sibei» tại chùa để ghi dấu chiến công&nbsp;</li><li>Puning là một trong <em>Tám ngôi chùa ngoài hoàng cung</em> (Eight Outer Temples) quanh Chengde – biểu tượng cho chính sách chính trị-đạo giáo nhằm kết nối phương Bắc và Tây – đặc biệt là với các dân tộc Tạng, Mông&nbsp;</li><li>Năm 1994, cấp UNESCO công nhận Puning cùng toàn bộ khu tổ hợp là Di sản Thế giới .</li></ul><h2>3. Kiến trúc nổi bật</h2><ul><li><strong>Quy mô &amp; tổ chức</strong>: Công trình trải dài khoảng 250 m x 130 m, tổng diện tích hơn 23.000 m²&nbsp;</li><li><strong>Thủ phủ kiến trúc</strong>: Phía trước mang đậm nét kiến trúc người Hán (cổng, Thiên Vương điện, Đại Hùng bảo điện), phía sau lấy cảm hứng từ tu viện <strong>Samye ở Tây Tạng</strong> – tiêu biểu cho giao thoa văn hóa .</li><li><strong>Đại Phật gỗ 22 m</strong>: tác phẩm trạm khắc từ 5 loại gỗ khác nhau, nặng 110 tấn, tượng nghìn tay nghìn mắt Avalokiteśvara, từng được ghi nhận vào Guinness 1999 .</li><li><strong>Mahāyāna Pavilion</strong> (Dasheng ge): điện chính cao 36.75 m, gồm sáu mái dốc, vòm mạ vàng trên đỉnh .</li><li>Các công trình phụ: Tháp chuông – trống, bia cổ, sân lễ, hành lang, mái Tạng và bia kỷ niệm của Càn Long.</li></ul><h2>4. Giá trị tâm linh</h2><ul><li><strong>Biểu tượng hòa bình vĩnh cửu</strong>: Sự kết hợp giữa công trình Hán – Tạng thể hiện ý muốn gắn kết các dân tộc dưới triều đại Càn Long .</li><li><strong>Tôn tượng nghìn tay nghìn mắt</strong>: biểu tượng cho lòng từ bi vô cùng, sự cứu khổ cứu nạn mọi nơi. Đây là một trong các tượng Phật gỗ lớn nhất thế giới .</li><li><strong>Hoạt động Phật sự hiện nay</strong>: là ngôi chùa còn hoạt động, duy trì tăng đoàn theo phái Gelug – Tây Tạng, tổ chức lễ bái, tụng niệm, hành hương cho tín đồ từ Tạng, Mông đến Thanh – Bắc Kinh .</li></ul><h2>5. Trải nghiệm du khách</h2><ul><li><strong>Giờ mở cửa &amp; vé</strong>:<ul><li>Mở cửa 08:00–18:00, một số nguồn ghi 08:30–16:00 hoặc 08:00–17:30 tùy theo mùa.</li><li>Giá vé: 45 CNY (tháng 4–10), 60–80 CNY theo mùa thấp điểm và lễ tết.</li></ul></li><li><strong>Khung cảnh &amp; hoạt động</strong>:<ul><li>Khám phá kiến trúc, cảnh quan đồi thông xung quanh và chiêm ngưỡng Đại Phật gỗ bên trong điện chính.</li><li>Nghe kinh, xoay pháp luân hoặc cầu an trong không gian tĩnh lặng.</li><li>Tham quan các bia đá, bảo vật từ đời Thanh vẫn còn lưu giữ lâu đời.</li></ul></li><li><strong>Di chuyển</strong>:<ul><li>Từ thành phố Chengde: taxi, xe buýt nối đến chân đồi.</li><li>Có tour khứ hồi dành cho khách tới thăm Hoàng cung Mùa hè (Summer Palace) kết hợp 8 ngôi chùa ngoài .</li></ul></li><li><strong>Mẹo nhỏ</strong>:<ul><li>Đi sớm để tránh nắng hè hoặc đông khách team tour.</li><li>Mặc trang phục lịch sự, giữ yên lặng, không chụp ảnh nơi nghiêm trang.</li><li>Khám phá khu vực hậu điện để chụp ảnh toàn cảnh mái Tạng.</li></ul></li></ul><h2>6. Kết luận &amp; hướng dẫn thực tế</h2><p><strong>Puning Temple</strong> không chỉ là điểm du lịch, mà còn là hành trình qua lịch sử, tâm linh và kiến trúc <em>Tây – Hán hội tụ</em>. Để chuyến tham quan thêm trọn vẹn:</p><h3>🗓 Lịch trình gợi ý (2–3 giờ)</h3><ol><li><strong>08:00–08:15</strong>: Tới cổng, mua vé, qua cổng chính.</li><li><strong>08:15–09:00</strong>: Tham quan Thiên Vương điện và Đại Hùng bảo điện.</li><li><strong>09:00–09:45</strong>: Vào Trung tâm Đại Phật, chiêm bái Bồ-tát nghìn tay.</li><li><strong>09:45–10:30</strong>: Khám phá Mahāyāna Pavilion, tháp chuông – trống, sân bia.</li><li><strong>10:30–11:00</strong>: Đi dạo quanh khu vườn và khu Tạng lầu, chụp ảnh mái ngói phong sắc.</li><li><strong>11:00</strong>: Ra về hoặc tham gia chương trình hướng dẫn văn hóa ở điểm du lịch liền kề.</li></ol><h3>✅ Lưu ý tham quan</h3><ul><li>Mang giày thoải mái vì phải đi bộ nhiều.</li><li>Ánh sáng chỗ Đại Phật không mạnh – chuẩn bị máy ảnh tốt.</li><li>Nếu vào các dịp lễ Phật, tránh tiếng ồn, tôn trọng không gian.</li><li>Kết hợp chuyến đi cùng Hoàng cung Mùa hè để hiểu rõ bối cảnh lịch sử.</li></ul><p><br></p>
+                                    </div>
+                                </div>
+                                <div class="three-see-more mt-10 text-gray-1f fw-600 font-noto-sans fs-14 js__extendBtn">Xem thêm</div>
+                            </div>
+                            <!-- end three -->
+                            <!-- four -->
+                            <div class="popup-detail-pagoda__four d-3xl-grid col-2 mt-20">
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Số điện thoại</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">0813990399</p>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Thời gian hoạt động:</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">06:00 - 20:00</p>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Trang web:</p>
+                                    <a href="#" class="four-text-2 four-link fs-14 font-noto-sans text-red-a60 fw-600 d-3xl-flex items-center">
+                                        <span class="four-link__text">Truy cập</span>
+                                        <div class="four-link__icon ml-4 icon-10 flex-0 d-3xl-flex items-center">
+                                            <img src="./images/svg/arrow-next-red-2.svg" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Quốc gia:</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">Việt Nam</p>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Người sáng lập:</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">Hòa thượng Pháp sư Giác Nhiên</p>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Trụ trì:</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">Hòa thượng Thích Minh Bửu</p>
+                                </div>
+                                <div class="four-text py-15 border-b-e0">
+                                    <p class="four-text-1 fs-14 font-noto-sans text-gray-8c fw-600">Khởi lập:</p>
+                                    <p class="four-text-2 fs-14 font-noto-sans text-gray-1f fw-600">Năm 1968</p>
+                                </div>
+                            </div>
+                            <!-- end four -->
+
+                        </div>
+                        <!-- end pane -->
+                        <!-- pane -->
+                        <div class="popup-detail-pagoda__pane hidden js__tabPane">
+                            <div class="lecture-children-two-primary__not-found d-3xl-flex flex-column items-center justify-center">
+                                <div>
+                                    <img src="./images/svg/no-data.svg" alt="">
+                                </div>
+                                <h1 class="fs-18 fw-600 mt-20">Không có tin tức nào</h1>
+                            </div>
+
+                        </div>
+                        <!-- end pane -->
+                        <!-- pane -->
+                        <div class="popup-detail-pagoda__pane hidden js__tabPane">
+                            <div class="lecture-children-two-primary__not-found d-3xl-flex flex-column items-center justify-center">
+                                <div>
+                                    <img src="./images/svg/no-data.svg" alt="">
+                                </div>
+                                <h1 class="fs-18 fw-600 mt-20">Không có tin tức nào</h1>
+                            </div>
+
+                        </div>
+                        <!-- end pane -->
+                    </div>
+                    <!-- end content -->
+                </div>
+                <div class="overlay js__overlay"></div>
+            </div>
+            <!-- end popup chi tiet chua -->
+            <!-- popup đóng góp ý kiến -->
+            <div class="popup-feedback popup-container js__popupFeedbackPagodaContainer">
+                <div class="popup-feedback__container popup-content">
+                    <!-- heading -->
+                    <div class="popup-feedback__heading d-3xl-flex items-center justify-between pb-20 border-b-e0 py-16 px-20 p-md-15">
+                        <h1 class="heading-title fs-18 font-noto-sans fw-600 text-gray-1f"><span>Đóng góp thông tin chùa</span></h1>
+                        <div class="heading-icon js__closePopupFeedbackPagoda">
+                            <img src="./images/svg/close-gray.svg" alt="">
+                        </div>
+                    </div>
+                    <!-- end heading -->
+                    <!-- content -->
+                    <div class="popup-feedback__content py-16 px-20 p-md-15">
+                        <div class="popup-feedback__form font-noto-sans">
+                            <form action="">
+                                <div class="form-container">
+                                    <div class="form-group">
+                                        <label class="form-label">Tên chùa <span class="required">*</span></label>
+                                        <input type="text" class="form-input" placeholder="Thiền viện Trúc Lâm Đại Giác" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Địa chỉ chùa <span class="required">*</span></label>
+                                        <input type="text" class="form-input" placeholder="Số 8, tổ 6 (ngõ Vườn Treo), đường Điện Biên Phủ, Sa Pa, Lào Cai" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Thông tin khác</label>
+                                        <textarea class="form-textarea" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'" placeholder="Nhập thêm các thông tin..."></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Upload hình ảnh</label>
+                                        <p class="form-note">Tối đa 24 ảnh, kích thước tối thiểu 640x360 px, tối đa 20 MB (SVG, PNG, JPG WEBP)</p>
+                                        
+                                        <div id="imageUploadContainer" class="upload-wrapper">
+                                            <label class="upload-btn" for="upload-input">
+                                                <div class="upload-icon">
+                                                    <img src="./images/svg/imgae-demo-1.svg" alt="">
+                                                </div>
+                                                <span class="text-center text-gray-1f fw-600 fs-12 d-3xl-block mt-4">Tải ảnh lên</span>
+                                                <input type="file" id="upload-input" multiple accept="image/*" hidden>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-footer p-16">
+                                        <button type="submit" class="btn-submit fs-14 font-noto-sans fw-600">Gửi đóng góp</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end content -->
+                </div>
+                <div class="overlay js__overlay"></div>
+            </div>
+            <!-- end popup đóng góp ý kiến -->
             <!-- primary -->
             <section class="pagoda-primary relative z-20 over-hidden bg-white js__pagodaContainer">
                 <div class="pagoda-primary__container w-1920 relative z-10">
@@ -1689,7 +1926,7 @@
                                 <div class="right-top d-3xl-flex items-center justify-between gap-8">
                                     <h1 class="right-top__title fs-16 font-noto-sans text-gray-323 fw-600"><span>278 ngôi chùa trong khu vực</span></h1>
 
-                                    <div class="right-top__btn d-3xl-flex items-center">
+                                    <div class="right-top__btn d-3xl-flex items-center js__showPopupFeedbackPagoda">
                                         <div class="btn-icon icon-20 flex-0 mr-8">
                                             <img src="./images/svg/fly-red.svg" alt="">
                                         </div>
@@ -1703,7 +1940,7 @@
                                     <!-- article list -->
                                     <div class="article-list d-3xl-grid col-2 gap-16">
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1727,7 +1964,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1751,7 +1988,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1775,7 +2012,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1799,7 +2036,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1823,7 +2060,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1847,7 +2084,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -1871,7 +2108,7 @@
                                         </div>
                                         <!-- end article -->
                                         <!-- article -->
-                                        <div class="article p-2">
+                                        <div class="article p-2 js__showPopupDetailPagoda">
                                             <div class="article-inner shadow over-hidden border-8">
                                                 <!-- img -->
                                                 <div class="article-img">
@@ -2019,7 +2256,7 @@
                 })
                 .addTo(map)
                 .bindPopup(`
-                    <div class="article shadow over-hidden border-8">
+                    <div class="article shadow over-hidden border-8 js__showPopupDetailPagoda">
                         <!-- img -->
                         <div class="article-img">
                             <div class="ratio-21x9 over-hidden scale-107">

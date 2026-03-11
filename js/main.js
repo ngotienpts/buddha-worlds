@@ -96,6 +96,66 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý sự kiện hiện popup detail pagoda
+    function handlePopupDetailPagoda() {
+        const popupContainer = document.querySelector(".js__popupDetailPagodaContainer");
+        if (!popupContainer) return;
+
+        const closePopup = popupContainer.querySelector(".js__closePopupDetailPagoda");
+        const overlay = popupContainer.querySelector(".js__overlay");
+
+        // 1. Lắng nghe click trên toàn bộ document (Event Delegation)
+        document.addEventListener('click', function (e) {
+            // Kiểm tra nếu click trúng phần tử có class hoặc nằm trong phần tử có class js__showPopupDetailPagoda
+            const target = e.target.closest('.js__showPopupDetailPagoda');
+            
+            if (target) {
+                popupContainer.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+            }
+        });
+
+        // 2. Hàm đóng popup
+        const closeFullPopup = () => {
+            popupContainer.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        };
+
+        if (closePopup) closePopup.onclick = closeFullPopup;
+        if (overlay) overlay.onclick = closeFullPopup;
+    }
+
+    // xử lý sự kiện hiên popup feedback
+    function handlePopupFeedbackPagoda() {
+        const triggerButtons = document.querySelectorAll('.js__showPopupFeedbackPagoda');
+        const popupContainer = document.querySelector(".js__popupFeedbackPagodaContainer");
+
+        // Nếu không có nút bấm hoặc không có container thì thoát sớm
+        if (triggerButtons.length === 0 || !popupContainer) return;
+
+        // Tìm các thành phần bên trong popup một lần duy nhất
+        const closePopup = popupContainer.querySelector(".js__closePopupFeedbackPagoda");
+        const overlay = popupContainer.querySelector(".js__overlay");
+
+        // Hàm đóng popup dùng chung
+        const closeFullPopup = () => {
+            popupContainer.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        };
+
+        // Gán sự kiện mở cho tất cả các nút
+        triggerButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                popupContainer.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+            });
+        });
+
+        // Gán sự kiện đóng
+        if (closePopup) closePopup.addEventListener('click', closeFullPopup);
+        if (overlay) overlay.addEventListener('click', closeFullPopup);
+    }
+
 
     // Xử lý video tỉ lệ 16:9
      function handleVideo_16x9() {
@@ -129,28 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             
         });
-    }
-    // Xử lý upload file
-     function handleUploadFile() {
-        const inputs = document.querySelectorAll( '.js__inputFile' );
-        if (inputs.length === 0) return;
-
-        Array.prototype.forEach.call( inputs, function( input )
-        {
-            var label	 = input.nextElementSibling,
-                labelVal = label.innerHTML;
-
-            input.addEventListener('change', function(e) {
-                let fileName = e.target.value.split('\\').pop(); 
-
-                if (fileName) {
-                    label.querySelector('div').innerHTML = fileName;
-                } else {
-                    label.innerHTML = labelVal;
-                }
-            });
-        });
-
     }
 
     // xử lý sự kiện collapse
@@ -366,6 +404,57 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý uploadfile
+    function handleUploadFile() {
+        document.getElementById('upload-input').addEventListener('change', function(event) {
+            const container = document.getElementById('imageUploadContainer'); 
+            const files = event.target.files;
+            
+            // 1. Lấy số lượng ảnh hiện có trong container
+            const currentImages = container.querySelectorAll('.img-preview-item').length;
+            
+            // 2. Tính toán xem còn được phép thêm bao nhiêu ảnh
+            const remainingSlots = 24 - currentImages;
+
+            if (remainingSlots <= 0) {
+                alert("Bạn đã đạt giới hạn tối đa 24 ảnh.");
+                this.value = ""; // Reset input
+                return;
+            }
+
+            // 3. Chỉ lặp qua số lượng file cho phép (tối đa là remainingSlots)
+            const filesToUpload = Array.from(files).slice(0, remainingSlots);
+
+            if (files.length > remainingSlots) {
+                alert(`Bạn chỉ có thể thêm tối đa ${remainingSlots} ảnh nữa.`);
+            }
+
+            filesToUpload.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.classList.add('img-preview-item');
+                    div.innerHTML = `
+                        <img src="${e.target.result}">
+                        <button type="button" class="btn-remove-img">✕</button>
+                    `;
+
+                    // Logic xóa ảnh khi click nút X
+                    div.querySelector('.btn-remove-img').onclick = () => {
+                        div.remove();
+                    };
+                    
+                    container.appendChild(div);
+                }
+                reader.readAsDataURL(file);
+            });
+
+            // Reset input để có thể chọn lại cùng 1 file nếu cần
+            this.value = ""; 
+        });
+    }
 
     // xử lý lấy nội dung khi chuyển slide
    function getContentPrimary(splide, container) {
@@ -1064,6 +1153,21 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    // khởi tạo hàm đếm số lượng ảnh ở detail pagoda
+    function initCounterImagesDetailPagoda() {
+        const galleries = document.querySelectorAll('.js__galleryImages');
+
+        galleries.forEach((gallery) => {
+            const items = gallery.querySelectorAll('.js__imgItem');
+            
+            if (items.length > 5) {
+                const fifthItem = items[4];
+                const remaining = items.length - 5; 
+                fifthItem.style.setProperty('--count', `"+${remaining}"`);
+            }
+        });
+    }
+
 
     // Khởi tạo fancybox
     function initFancybox() {
@@ -1138,6 +1242,10 @@ document.addEventListener("DOMContentLoaded", function () {
         handleCollapse();
         handleAudio();
         handlePagodaPrimary();
+        initCounterImagesDetailPagoda();
+        handlePopupDetailPagoda();
+        handlePopupFeedbackPagoda();
+        handleUploadFile();
         // slide
         initSliderFreeItems();
         initSliderOneItems();
