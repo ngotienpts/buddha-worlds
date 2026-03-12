@@ -406,54 +406,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // xử lý uploadfile
     function handleUploadFile() {
-        document.getElementById('upload-input').addEventListener('change', function(event) {
-            const container = document.getElementById('imageUploadContainer'); 
-            const files = event.target.files;
-            
-            // 1. Lấy số lượng ảnh hiện có trong container
-            const currentImages = container.querySelectorAll('.img-preview-item').length;
-            
-            // 2. Tính toán xem còn được phép thêm bao nhiêu ảnh
-            const remainingSlots = 24 - currentImages;
-
-            if (remainingSlots <= 0) {
-                alert("Bạn đã đạt giới hạn tối đa 24 ảnh.");
-                this.value = ""; // Reset input
-                return;
-            }
-
-            // 3. Chỉ lặp qua số lượng file cho phép (tối đa là remainingSlots)
-            const filesToUpload = Array.from(files).slice(0, remainingSlots);
-
-            if (files.length > remainingSlots) {
-                alert(`Bạn chỉ có thể thêm tối đa ${remainingSlots} ảnh nữa.`);
-            }
-
-            filesToUpload.forEach(file => {
-                if (!file.type.startsWith('image/')) return;
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const div = document.createElement('div');
-                    div.classList.add('img-preview-item');
-                    div.innerHTML = `
-                        <img src="${e.target.result}">
-                        <button type="button" class="btn-remove-img">✕</button>
-                    `;
-
-                    // Logic xóa ảnh khi click nút X
-                    div.querySelector('.btn-remove-img').onclick = () => {
-                        div.remove();
-                    };
-                    
-                    container.appendChild(div);
+        const uploadInput = document.getElementById('upload-input')
+        if(uploadInput){
+            uploadInput.addEventListener('change', function(event) {
+                const container = document.getElementById('imageUploadContainer'); 
+                const files = event.target.files;
+                
+                // 1. Lấy số lượng ảnh hiện có trong container
+                const currentImages = container.querySelectorAll('.img-preview-item').length;
+                
+                // 2. Tính toán xem còn được phép thêm bao nhiêu ảnh
+                const remainingSlots = 24 - currentImages;
+    
+                if (remainingSlots <= 0) {
+                    alert("Bạn đã đạt giới hạn tối đa 24 ảnh.");
+                    this.value = ""; // Reset input
+                    return;
                 }
-                reader.readAsDataURL(file);
+    
+                // 3. Chỉ lặp qua số lượng file cho phép (tối đa là remainingSlots)
+                const filesToUpload = Array.from(files).slice(0, remainingSlots);
+    
+                if (files.length > remainingSlots) {
+                    alert(`Bạn chỉ có thể thêm tối đa ${remainingSlots} ảnh nữa.`);
+                }
+    
+                filesToUpload.forEach(file => {
+                    if (!file.type.startsWith('image/')) return;
+    
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const div = document.createElement('div');
+                        div.classList.add('img-preview-item');
+                        div.innerHTML = `
+                            <img src="${e.target.result}">
+                            <button type="button" class="btn-remove-img">✕</button>
+                        `;
+    
+                        // Logic xóa ảnh khi click nút X
+                        div.querySelector('.btn-remove-img').onclick = () => {
+                            div.remove();
+                        };
+                        
+                        container.appendChild(div);
+                    }
+                    reader.readAsDataURL(file);
+                });
+    
+                // Reset input để có thể chọn lại cùng 1 file nếu cần
+                this.value = ""; 
             });
-
-            // Reset input để có thể chọn lại cùng 1 file nếu cần
-            this.value = ""; 
-        });
+        }
     }
 
     // xử lý lấy nội dung khi chuyển slide

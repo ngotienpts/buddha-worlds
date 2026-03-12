@@ -1815,3 +1815,19 @@ input[type=number]::-webkit-inner-spin-button {
         }
     }
 }
+/*--------------------------------------------------- monastics*/
+.monastics-primary {
+    background:linear-gradient(rgb(255, 244, 245), rgb(255, 255, 255));
+    &__content {
+        .article {
+            border: 1px solid transparent;
+            cursor: pointer;
+            &:hover {
+                border-color: rgb(255, 197, 203);
+            }
+        }
+        .article-img {
+            box-shadow: rgb(255, 223, 226) 0px 0px 0px 2px;
+        }
+    }
+}
