@@ -152,6 +152,19 @@
         
     }
 }
+.pagi-red-secondary {
+    .swiper-pagination-bullet {
+        background: #e0e0e0;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+        background: #7a1318;
+        
+    }
+}
 
 
 

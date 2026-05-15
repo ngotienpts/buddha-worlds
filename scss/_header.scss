@@ -606,6 +606,19 @@
                 height: auto;
             }
         }
+
+        &--new {
+            display: block;
+            background-color: rgba($color: #fff, $alpha: 0.1);
+            border: 1px solid #fff;
+
+            .search-input {
+                color: #fff;
+                &::placeholder {
+                    color: #fff;
+                }
+            }
+        }
     }
 }
 /* search pc*/
@@ -745,4 +758,215 @@
             border-bottom: 1px solid #f0f0f0;
         }
     }
+}
+
+// login
+.login {
+  &-icon {
+    border: 1px solid #ffffff50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #73737320;
+    }
+
+  }
+  .not-logged {
+    .content {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(95%, 500px);
+      height: auto;
+      background-color: #f6f6f6;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      max-height: calc(100vh - 200px);
+      overflow: auto;
+      border-radius: 12px;
+
+      &.active {
+        display: flex;
+      }
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        border-radius: 999px;
+        display: none;
+      }
+      &::-webkit-scrollbar-track {
+        background: #D9D9D9;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #D9D9D9;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #D9D9D9;
+      }
+
+    }
+
+    .content-top__close {
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+
+         img {
+            width: 16px;
+            height: auto;
+            
+            }
+    }
+
+    .content-main {
+        .heading {
+            background-color: #7a1318;
+        }
+        .heading-1,
+        .heading-2 {
+            padding: 15px 20px;
+            position: relative;
+            cursor: pointer;
+            font-size: 16px;
+
+            &.active {
+                background-color: #ad8990;
+            }
+        }
+    }
+    .content-main__login,
+    .content-main__register,
+    .content-main__forgot {
+      display: none;
+    }
+    .content-main__login.active,
+    .content-main__register.active,
+    .content-main__forgot.active {
+      display: block;
+    }
+    
+  }
+  .form-label {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Noto Sans", sans-serif;
+    color: #000;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .form-input {
+    height: 46px;
+    width: 100%;
+    border: 1px solid #D3D9EC;
+    border-radius: 3px;
+    padding: 12px 15px;
+    font-size: 15px;
+    color: #444;
+    font-family: "Noto Sans", sans-serif;
+    background-color: #fff;
+
+    &:focus {
+      border-color: #0084FF;
+    }
+  }
+
+  .mess-error {
+    font-size: 12px;
+    font-family: 'arial';
+    color: #A51B38;
+    margin-top: 5px;
+  }
+  .form-submit {
+    font-size: 16px;
+    color: #fff;
+    background-color: #7a1318;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 10px 30px;
+    width: 100%;
+    &:hover {
+      background-color: #960505;
+    }
+  }
+  .btn-forgot {
+    font-size: 16px;
+    font-family: 'arial';
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .show-pass {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-pass {
+    padding-right: 34px;
+}
+
+  /* logged */
+  .logged {
+    cursor: pointer;
+
+    &-heading .avatar img {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+    }
+    &-content {
+      background-color: #fff;
+      border: 1px solid #DBE0EB;
+      right: 0;
+      top: 100%;
+      min-width: 160px;
+      padding: 10px 0;
+      margin-top: 12px;
+      z-index: 100;
+      display: none;
+    }
+    .dropdownContent.active {
+      display: block;
+    }
+
+    &-link {
+      padding: 10px 20px;
+      display: block;
+    }
+    .log-out {
+      padding: 10px 20px;
+      display: block;
+
+      &:hover {
+        color: #FF5858;
+      }
+    }
+  }
+  
 }

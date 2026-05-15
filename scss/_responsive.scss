@@ -185,6 +185,9 @@
         max-width: 700px;
         margin: auto;
     }
+    .w-md-150px {
+        width: 150px;
+    }
     .col-md-1 {
         grid-template-columns: 1fr;
     }
@@ -196,9 +199,19 @@
     }
 
     /*-------------------------------------------------------------------------*/
+    .border-md-0 {
+        border-radius: 0;
+    }
+    /*-------------------------------------------------------------------------*/
     .mx-md-auto {
         margin-left: auto;
         margin-right: auto;
+    }
+    /*-------------------------------------------------------------------------*/
+    .flex-md-nowrap {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: auto;
     }
     /*-------------------------------------------------------------------------*/
     .gap-md-10 {
@@ -242,6 +255,9 @@
     .mt-md-10 {
         margin-top: 10px;
     }
+    .pl-md-10 {
+        padding-left: 10px;
+    }
     /*-------------------------------------------------------------------------*/
     .px-md-15 {
         padding-left: 15px;
@@ -264,6 +280,9 @@
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    .pb-md-20 {
+        padding-bottom: 20px;
+    }
     /*-------------------------------------------------------------------------*/
     .py-md-40 {
         padding-top: 40px;
@@ -284,6 +303,9 @@
     }
     .border-md-r-0 {
         border-right: none;
+    }
+    .border-b-md-ff {
+        border-bottom: 1px solid #fff;
     }
     /*-------------------------------------------------------------------------*/
     .fs-md-12 {
@@ -624,6 +646,97 @@
             }
         }
     }
+    // --------------------------------------------------------------------cong dong phat giao
+    .heading-gradient-gold--secondary {
+        padding: 5px;
+    }
+    .cate-menu-primary {
+        &__item {
+            border-right: none;
+
+            .item-group__content {
+                display: none;
+            }
+        }
+    }
+
+    .cate-cong-dong-children-primary {
+        .heading-right {
+            &__list {
+                flex-wrap: nowrap;
+                white-space: nowrap;
+                overflow: auto;
+            }
+        }
+    }
+    .block-children-primary {
+        &__left {
+            .box-top {
+                &__action {
+                    &-text {
+                        display: inline-flex;
+                    }
+                    &.active {
+                        .box-top__list {
+                            display: block;
+                        }
+                    }
+                }
+                &__list {
+                    display: none;
+                    background-color: #fff;
+                    padding: 10px; 
+                    border-radius: 8px;
+                    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.1);
+                    margin-top: 10px;
+                    position: absolute;
+                    z-index: 10;
+                }
+                &__item {
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    border-radius: 0;
+                    padding: 10px;
+
+                    &.active {
+                        border-color: #eee;
+                        color: #a60e1d;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+           
+        }
+    }
+
+    .cate-cong-dong-children-tertiary {
+         &__icon {
+            img {
+                width: 90px;
+                height: auto;
+            }
+        }
+
+        &__tooltip {
+            right: 60px;
+            font-size: 8px;
+        }
+
+        > .icon-close {
+            top: 10px;
+            right: 0px;
+            width: 18px;
+            height: 18px;
+
+            img {
+                width: 12px;
+            }
+        }
+    }
+
     // --------------------------------------------------------------------detail
     // --------------------------------------------------------------------digital library
     .digital-library-primary {

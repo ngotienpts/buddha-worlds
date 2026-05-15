@@ -28,11 +28,12 @@
 }
 
 .footer {
+    background-color: #7a1318;
     &-home {
         background-color: #250201;
         .test-version {
             border: 1px solid rgba(239, 231, 182, 0.12) !important;
-            color: #EFE7B6 !important;
+            color: #efe6b4 !important;
         }
        
 
@@ -46,12 +47,12 @@
         }
         .footer-social {
             &__link {
-                color: #EFE7B6 !important;
+                color: #efe6b4 !important;
             }
         }
         .heading-secondary {
             &__title {
-                border-left: 2px solid #EFE7B6;
+                border-left: 2px solid #efe6b4;
                 color: #fff;
                 
             }
@@ -59,7 +60,7 @@
         .list-text {
             .list-item {
                 &__icon {
-                    color: #EFE7B6 !important;
+                    color: #efe6b4 !important;
                 }
                 &__txt {
                     color: #fff !important;
@@ -69,10 +70,35 @@
         
         .footer-primary__bot {
             .list-text {
-                color: rgba(255, 255, 255, 0.64);
+                // color: rgba(255, 255, 255, 0.64);
+                color: #fff;
             }
         }
     }
+     .heading-secondary {
+            &__title {
+                border-left: 2px solid #efe6b4;
+                color: #fff;
+                
+            }
+        }
+        .list-text {
+            .list-item {
+                &__icon {
+                    color: #efe6b4 !important;
+                }
+                &__txt {
+                    color: #fff !important;
+                }
+            }
+        }
+        
+        .footer-primary__bot {
+            .list-text {
+                // color: rgba(255, 255, 255, 0.64);
+                color: #fff;
+            }
+        }
     &-logo {
         &__icon {
             width: auto;
@@ -113,7 +139,7 @@
                     color: #A60E1D;
                 }
                 &__txt {
-                    color: #171a1c;
+                    color: #fff;
                 }
             }
         }

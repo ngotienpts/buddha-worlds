@@ -96,6 +96,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý sự kiện chuyển tab parents
+    function handleChangeTabParents() {
+        const changTabs = document.querySelectorAll('.js__changeTabParents');
+
+        changTabs.forEach((changTab) => {
+            const tabs = changTab.querySelectorAll(".js__tabItemParents");
+            const panes = changTab.querySelectorAll(".js__tabPaneParents");
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', function() {
+                    const pane = panes[index];
+                    if (!pane) return;
+
+                    // Sử dụng optional chaining (?.) để tránh lỗi nếu không tìm thấy phần tử .active
+                    changTab.querySelector('.js__tabItemParents.active')?.classList.remove('active');
+                    changTab.querySelector('.js__tabPaneParents.active')?.classList.remove('active');
+
+                    this.classList.add('active');
+                    pane.classList.add('active');
+                });
+            });
+        });
+    }
+
     // xử lý sự kiện hiện popup detail pagoda
     function handlePopupDetailPagoda() {
         const popupContainer = document.querySelector(".js__popupDetailPagodaContainer");
@@ -154,6 +178,187 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gán sự kiện đóng
         if (closePopup) closePopup.addEventListener('click', closeFullPopup);
         if (overlay) overlay.addEventListener('click', closeFullPopup);
+    }
+
+    // xử lý sự kiện để show popupLogin
+    function handleShowPopupLogin() {
+        const showPopupLogins = document.querySelectorAll(".js__showPopupLogin");
+        const popupLoginContainer = document.querySelector(".js__popupLoginContainer");
+
+        if(popupLoginContainer && showPopupLogins) {
+
+            const popupLogin = popupLoginContainer.querySelector(".js__popupLogin");
+            const closePopupLogin = popupLoginContainer.querySelector(".js__closePopupLogin");
+            const overlay = popupLoginContainer.querySelector(".js__overlay");
+            
+            if (showPopupLogins.length === 0) return;
+
+                
+            showPopupLogins.forEach((showPopupLogin)=>{
+
+                showPopupLogin.onclick = function() {
+                    popupLogin.classList.add('active')
+                    overlay.classList.add('active')
+                    document.querySelector("body").style.overflow = "hidden";
+                }
+    
+                closePopupLogin.onclick = function () {
+                    document.querySelector("body").style.overflow = "auto";
+                    popupLogin.classList.remove('active')
+                    overlay.classList.remove('active')
+                    loginForm.classList.add('active')
+                    registerForm.classList.remove('active')
+                    forgotForm.classList.remove('active')
+                };
+    
+                overlay.onclick = function () {
+                    this.classList.remove("active");
+                    document.querySelector("body").style.overflow = "auto";
+                    popupLogin.classList.remove('active');
+                    loginForm.classList.add('active')
+                    registerForm.classList.remove('active')
+                    forgotForm.classList.remove('active')
+                };
+
+                // change form login register forgot
+                const loginContainerForm = document.querySelector(".js__loginContainerForm");
+
+                if(!loginContainerForm) return
+
+                const loginForm = loginContainerForm.querySelector('.js__loginForm')
+                const registerForm = loginContainerForm.querySelector('.js__registerForm')
+                const forgotForm = loginContainerForm.querySelector('.js__forgotForm')
+
+                const loginBtn = registerForm.querySelector('.js__loginBtn')
+                const registerBtn = loginForm.querySelector('.js__registerBtn')
+                const forgotBtn = loginForm.querySelector('.js__forgotBtn')
+                
+                // login
+                registerBtn.onclick = function() {
+                    loginForm.classList.remove('active')
+                    registerForm.classList.add('active')
+                    forgotForm.classList.remove('active')
+                }
+                // register
+                loginBtn.onclick = function() {
+                    registerForm.classList.remove('active')
+                    loginForm.classList.add('active')
+                }
+                // forgot
+                forgotBtn.onclick = function() {
+                    loginForm.classList.remove('active')
+                    forgotForm.classList.add('active')
+                }
+            })
+
+            
+        }
+        
+        
+    }
+    // xử lý sự kiện để show pop gui cau hoi
+    function handleShowPopupQuestions() {
+        const triggerButtons = document.querySelectorAll('.js__showPopupQuestions');
+        const popupContainer = document.querySelector(".js__popupQuestinsContainer");
+
+        // Nếu không có nút bấm hoặc không có container thì thoát sớm
+        if (triggerButtons.length === 0 || !popupContainer) return;
+
+        // Tìm các thành phần bên trong popup một lần duy nhất
+        const closePopup = popupContainer.querySelector(".js__closePopupQuestins");
+        const overlay = popupContainer.querySelector(".js__overlay");
+
+        // Hàm đóng popup dùng chung
+        const closeFullPopup = () => {
+            popupContainer.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        };
+
+        // Gán sự kiện mở cho tất cả các nút
+        triggerButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                popupContainer.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+            });
+        });
+
+        // Gán sự kiện đóng
+        if (closePopup) closePopup.addEventListener('click', closeFullPopup);
+        if (overlay) overlay.addEventListener('click', closeFullPopup);
+
+        
+        
+        
+    }
+    // xử lý sự kiện để show pop giai dap
+    function handleShowPopupAnswer() {
+        const wrapperAnswer = document.querySelector('.js__popupAnswerWrapper');
+        
+        // Nếu không tìm thấy wrapper thì dừng lại luôn
+        if (!wrapperAnswer) return;
+
+        // Lấy các thành phần (Chỉ lấy 1 phần tử duy nhất)
+        const triggerButton = wrapperAnswer.querySelector('.js__showPopupAnswer');
+        const popupContainer = wrapperAnswer.querySelector(".js__popupAnswerContainer");
+        const hiddenAnswer = wrapperAnswer.querySelector(".js__hiddenAnswer");
+        const closePopup = wrapperAnswer.querySelector(".js__closePopupAnswer");
+        const overlay = wrapperAnswer.querySelector(".js__overlay");
+
+        // Kiểm tra các thành phần cốt lõi
+        if (!triggerButton || !popupContainer) return;
+
+        // --- Các hàm xử lý ---
+        
+        const openPopup = () => {
+            popupContainer.classList.add('active');
+            if (overlay) overlay.classList.add('active');
+        };
+
+        const closeFullPopup = () => {
+            popupContainer.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        };
+
+        const hideWholeWrapper = () => {
+            // Ẩn toàn bộ wrapper khi nhấn vào phần đáp án ẩn
+            wrapperAnswer.style.display = 'none';
+        };
+
+        // --- Gán sự kiện ---
+
+        // Mở khi nhấn nút
+        triggerButton.addEventListener('click', openPopup);
+
+        // Đóng khi nhấn nút Close hoặc Overlay
+        if (closePopup) closePopup.addEventListener('click', closeFullPopup);
+        if (overlay) overlay.addEventListener('click', closeFullPopup);
+
+        // Ẩn wrapper khi nhấn vào hiddenAnswer
+        if (hiddenAnswer) {
+            hiddenAnswer.addEventListener('click', hideWholeWrapper);
+        }
+    }
+
+
+    // xử lý hiện password
+    function handleTogglePassword() {
+        const passwordContainers = document.querySelectorAll(".js__passWordContainer");
+
+        passwordContainers.forEach((container) => {
+            const input = container.querySelector(".js__inputPassWord");
+            const btnToggle = container.querySelector(".js__showPassword");
+
+            if (input && btnToggle) {
+                btnToggle.onclick = function() {
+                    // Kiểm tra type hiện tại và chuyển đổi
+                    const isPassword = input.type === "password";
+                    input.type = isPassword ? "text" : "password";
+
+                    // (Tùy chọn) Bạn có thể thay đổi icon hoặc opacity ở đây
+                    this.style.opacity = isPassword ? "1" : "0.5";
+                };
+            }
+        });
     }
 
 
@@ -799,6 +1004,50 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+
+    function initSliderFiveItemsSecondary() {
+        const threeSlides = document.querySelectorAll(".js__fiveSlidesContainerSecondary");
+
+        if (threeSlides.length > 0) {
+            threeSlides.forEach((item) => {
+                var sliderElement = item.querySelector(".js__fiveSlideSecondary");
+                
+                if (!sliderElement) return;
+
+                var splide = new Splide(sliderElement, {
+                    type   : 'loop',      
+                    perPage: 5,        
+                    focus  : 'center', 
+                    gap    : '0px',   
+                    pagination: false, 
+                    arrows    : true, 
+                    
+                    breakpoints: {
+                        1024: {
+                            perPage: 5,
+                            gap    : '0px',
+                        },
+                        768: {
+                            perPage: 3,
+                            gap    : '00px',
+                        },
+                        
+                        640: {
+                            perPage: 3,
+                        }
+                    }
+                });
+
+                splide.on('mounted move', function () {
+                    setTimeout(() => {
+                        getContentPrimary(splide, item);
+                    }, 0);
+                });
+
+                splide.mount();
+            });
+        }
+    }
     // khởi tạo slider với 2 item custom
     function initSlideContainerCustomTwoItem() {
         const sliderContainers = document.querySelectorAll('.js__slideContainerCustomTwoItem');
@@ -1185,8 +1434,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Xử lý thanh header dính
     function handleStickyHeader() {
         const stickyHeaderPC = document.querySelector(".js__stickyHeader");
+        const stickyPoint = stickyHeaderPC.offsetTop;
         if (stickyHeaderPC) {
-            const isSticky = scrollY > 300;
+            const isSticky = scrollY > stickyPoint;
             stickyHeaderPC.classList.toggle("sticky", isSticky);
         }
     }
@@ -1246,9 +1496,13 @@ document.addEventListener("DOMContentLoaded", function () {
         handleAudio();
         handlePagodaPrimary();
         initCounterImagesDetailPagoda();
+        handleShowPopupLogin();
+        handleTogglePassword();
         handlePopupDetailPagoda();
         handlePopupFeedbackPagoda();
         handleUploadFile();
+        handleShowPopupQuestions();
+        handleShowPopupAnswer();
         // slide
         initSliderFreeItems();
         initSliderOneItems();
@@ -1258,12 +1512,14 @@ document.addEventListener("DOMContentLoaded", function () {
         initSliderFourItems();
         initSliderFiveItemsEmbla();
         initSliderFiveItems();
+        initSliderFiveItemsSecondary();
         initSliderGalleryItemsPrimary();
         
         // end slide
         handleBackTop();
         initFancybox();
         handleChangeTab();
+        handleChangeTabParents();
         window.addEventListener('scroll',handleWindowScroll);
         window.addEventListener('resize',handleWindowScroll);
     }
