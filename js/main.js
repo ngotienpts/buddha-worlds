@@ -361,6 +361,59 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // xử lý custom select
+    function handleCustomSelects() {
+        // 1. Lấy tất cả các bộ select custom có trên trang
+        const selectContainers = document.querySelectorAll('.js__selectCustomPrimaryContainer');
+
+        // 2. Duyệt qua từng bộ select để gán sự kiện riêng biệt
+        selectContainers.forEach(container => {
+            const defaultButton = container.querySelector('.group-select-primary__default');
+            const titleText = container.querySelector('.js__selectCustomPrimaryTitle');
+            const items = container.querySelectorAll('.js__selectCustomPrimaryItem');
+
+            // Nếu thiếu các thành phần giao diện cốt lõi thì bỏ qua container này
+            if (!defaultButton || !titleText) return;
+
+            // Hành động 1: Click vào nút default để Đóng/Mở Dropdown
+            defaultButton.onclick = function(e) {
+                e.stopPropagation(); // Ngăn sự kiện nổi bọt
+                
+                // Đóng tất cả các select khác trước khi mở select hiện tại (tránh bị đè nhau)
+                selectContainers.forEach(otherContainer => {
+                    if (otherContainer !== container) {
+                        otherContainer.classList.remove('active');
+                    }
+                });
+
+                // Toggle trạng thái của select hiện tại
+                container.classList.toggle('active');
+            };
+
+            // Hành động 2: Click chọn một Item trong danh sách
+            items.forEach(item => {
+                item.onclick = function() {
+                    // Cập nhật text hiển thị thành text của item vừa chọn
+                    titleText.innerText = item.innerText;
+
+                    // Xóa class 'active' ở tất cả item cũ và thêm vào item vừa chọn (nếu bạn cần style)
+                    items.forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Đóng dropdown sau khi chọn xong
+                    container.classList.remove('active');
+                };
+            });
+        });
+
+        // Hành động phụ: Click ra ngoài màn hình thì tự động đóng tất cả dropdown lại
+        document.addEventListener('click', function() {
+            selectContainers.forEach(container => {
+                container.classList.remove('active');
+            });
+        });
+    }
+
 
     // Xử lý video tỉ lệ 16:9
      function handleVideo_16x9() {
@@ -1421,6 +1474,139 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // khởi tạo date picker
+function setupDatePicker() {
+  const currentYear = new Date().getFullYear();
+
+  // Hàm cục bộ xử lý logic cho từng cụm (Start Date hoặc End Date)
+  function initGroup(dayId, monthId, yearId) {
+    const dayGroup = document.getElementById(dayId);
+    const monthGroup = document.getElementById(monthId);
+    const yearGroup = document.getElementById(yearId);
+
+    // Nếu không tìm thấy phần tử trên giao diện thì bỏ qua
+    if (!dayGroup || !monthGroup || !yearGroup) return;
+
+    // Lưu trữ giá trị đang chọn riêng cho cụm này
+    let selectedDate = { day: "", month: "", year: "" };
+
+    // Hàm sinh các item lựa chọn đổ vào `.select-options`
+    function renderOptions(element, items, placeholder) {
+      const optionsContainer = element.querySelector('.select-options');
+      if (!optionsContainer) return;
+
+      optionsContainer.innerHTML = ''; // Clear danh sách cũ
+
+      // 1. Thêm lựa chọn mặc định ban đầu
+      const defaultItem = document.createElement('div');
+      defaultItem.className = 'option-item';
+      defaultItem.textContent = placeholder;
+      defaultItem.addEventListener('click', () => selectValue(element, "", placeholder));
+      optionsContainer.appendChild(defaultItem);
+
+      // 2. Duyệt mảng dữ liệu để tạo các item số
+      items.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'option-item';
+        itemDiv.textContent = element.dataset.type === 'month' ? `Tháng ${item}` : item;
+        itemDiv.addEventListener('click', () => selectValue(element, item, itemDiv.textContent));
+        optionsContainer.appendChild(itemDiv);
+      });
+    }
+
+    // Hàm xử lý khi người dùng chọn một giá trị
+    function selectValue(element, value, label) {
+      const triggerSpan = element.querySelector('.select-trigger span');
+      if (triggerSpan) triggerSpan.textContent = label;
+
+      const type = element.dataset.type; // 'day', 'month', hoặc 'year'
+      selectedDate[type] = value;
+
+      // Khi thay đổi Tháng hoặc Năm -> Tính toán lại số ngày
+      if (type === 'month' || type === 'year') {
+        updateDays();
+      }
+    }
+
+    // 3. Hàm cập nhật số ngày động dựa vào Tháng và Năm được chọn
+    function updateDays() {
+      const selectedMonth = parseInt(selectedDate.month);
+      const selectedYear = parseInt(selectedDate.year);
+
+      // Tính số ngày trong tháng (mặc định là 31 ngày nếu chưa chọn tháng)
+      const daysInMonth = selectedMonth 
+        ? new Date(selectedYear || 2024, selectedMonth, 0).getDate() 
+        : 31;
+
+      // Tạo mảng số [1, 2, ..., daysInMonth]
+      const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+      
+      // Khởi tạo lại danh sách ngày trong div
+      renderOptions(dayGroup, daysArray, "Ngày");
+
+      // Nếu ngày đã chọn trước đó lớn hơn số ngày tối đa của tháng mới thì reset chữ về "Ngày"
+      if (selectedDate.day && parseInt(selectedDate.day) > daysInMonth) {
+        selectValue(dayGroup, "", "Ngày");
+      }
+    }
+
+    // Khởi tạo dữ liệu Tháng (1-12) và Năm (currentYear+5 về 2000)
+    const monthsArray = Array.from({ length: 12 }, (_, i) => i + 1);
+    const yearsArray = Array.from({ length: currentYear + 5 - 2000 + 1 }, (_, i) => currentYear + 5 - i);
+
+    renderOptions(monthGroup, monthsArray, "Tháng");
+    renderOptions(yearGroup, yearsArray, "Năm");
+
+    // Chạy lần đầu tiên để nạp sẵn 31 ngày ban đầu
+    updateDays();
+
+    // 4. LOGIC EVENT CLICK ĐÃ ĐƯỢC CẬP NHẬT THEO YÊU CẦU:
+    const groups = [dayGroup, monthGroup, yearGroup];
+    
+    groups.forEach(group => {
+      // Khi click vào select-trigger: toggle class 'open' (active) cho chính nó
+      const trigger = group.querySelector('.select-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation(); // Ngăn sự kiện lan ra ngoài document
+
+          // Đóng các dropdown khác trước khi toggle cái hiện tại
+          groups.forEach(g => {
+            if (g !== group) g.classList.remove('open');
+          });
+
+          group.classList.toggle('open');
+        });
+      }
+
+      // Khi click vào select-options (chọn item): thực hiện đóng menu bằng cách remove class 'open'
+      const options = group.querySelector('.select-options');
+      if (options) {
+        options.addEventListener('click', () => {
+          group.classList.remove('open');
+        });
+      }
+    });
+
+    // Khi click ra ngoài vùng dropdown: xóa hết class 'open' (remove active)
+    document.addEventListener('click', () => {
+      groups.forEach(g => g.classList.remove('open'));
+    });
+  }
+
+  // Kích hoạt hàm nội bộ cho cụm "Ngày bắt đầu" theo ID HTML của bạn
+  initGroup('start-day-group', 'start-month-group', 'start-year-group');
+  
+  // Kích hoạt hàm nội bộ cho cụm "Ngày kết thúc" theo ID HTML của bạn
+  initGroup('end-day-group', 'end-month-group', 'end-year-group');
+}
+
+// --- CÁCH SỬ DỤNG ---
+document.addEventListener('DOMContentLoaded', setupDatePicker);
+
+
+
+
     // Khởi tạo fancybox
     function initFancybox() {
         const fancyboxes = document.querySelectorAll(".fancybox-full");
@@ -1503,6 +1689,8 @@ document.addEventListener("DOMContentLoaded", function () {
         handleUploadFile();
         handleShowPopupQuestions();
         handleShowPopupAnswer();
+        handleCustomSelects();
+        setupDatePicker();
         // slide
         initSliderFreeItems();
         initSliderOneItems();

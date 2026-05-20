@@ -232,6 +232,8 @@
         }
 
     }
+    
+
 }
 /*------------------------------------------------------- detail digital library*/
 .detail-digital-library-primary {
@@ -745,6 +747,13 @@
                 color: #a60e1d;
             }
         }
+    }
+
+    &--text-white {
+        p,ul,li,h1,h2,h3,h4,h6,h6 {
+            color: #fff;
+        }
+
     }
 
 }

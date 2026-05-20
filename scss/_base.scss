@@ -329,6 +329,26 @@ p {
       
     }
 }
+.btn-yellow {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    background-color: #eee6b3;
+    color: #74101a;
+    outline: none;
+    font-weight: normal;
+    border: 1px solid #eee6b3;
+    border-radius: 12px;
+    font-weight: 600;
+    &:hover {
+        background-color: #d8d1a2;
+      
+    }
+}
+
+
 
 /*===========================================================================*/
 .fs-10 {
@@ -1446,6 +1466,9 @@ p {
 .h-48px {
     height: 48px;
 }
+.min-h-100vh {
+    min-height: 100vh;
+}
 
 /*=================================================================*/
 .z-10 {
@@ -1758,9 +1781,15 @@ p {
 .border-t-ff {
     border-top: 1px solid #fff;
 }
+.border-b-ff {
+    border-bottom: 1px solid #fff;
+}
 .border-b-ffcf {
     border-bottom: 1px solid #ffffffcf;
 }
 .border-00 {
     border: 1px solid #000;
+}
+.border-b-orange {
+    border-bottom: 1px solid #df7158;
 }
